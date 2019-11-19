@@ -1,0 +1,38 @@
+Data Formats
+
+\begin{itemize}
+\item 
+\item
+\end{itemize}
+
+%=================================================%
+The program design envisages multiple versions of the ShinyMCS web application.
+
+\subsection*{Version 1}
+
+
+\item Upload a data (preferably in CSV format)
+
+\begin{itemize}
+\item Simple Measurement case Replicate Measurement case
+\item Two format for data
+\item Otherwise Data will be in the form presented by Bendix Carstensen's work. Otherwise an error message will be returned.
+\item Complete Cases only.Rows with missing values will be deleted.
+\item{itemize}
+
+
+The Shiny web application will render a Bland-Altman plot. 
+In the case of replicate measures it will treat each pair of observations separetly.
+
+
+An identity plot and Bland-Altman plot will be constructed using ggplot2.
+Limits of agreement will be computed and displayed on the 
+
+%=================================================%
+% Version 1
+
+% Format 1 only
+
+% Format 1 and Format 2
+
+Format 2 allows for replicate measurements.

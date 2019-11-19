@@ -1,0 +1,19 @@
+
+shinyEffectsGallery
+Launch the shinyEffects Gallery
+
+#### Description
+
+A gallery of all components available in shinyEffects.
+
+#### Usage
+<pre><code>
+
+shinyEffectsGallery()
+
+#### Examples
+
+if (interactive()) {
+shinyEffectsGallery()
+}
+</code></pre>

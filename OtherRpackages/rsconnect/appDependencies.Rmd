@@ -1,0 +1,64 @@
+---
+title: "``rsconnect::appDependencies``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(rsconnect)
+```
+Detect Application Dependencies
+
+#### Description
+
+Recursively detect all package dependencies for an application. This function parses all .R files in the application directory to determine what packages the application depends on; and for each of those packages what other packages they depend on.
+
+#### Usage
+<pre><code>
+
+appDependencies(appDir = getwd(), appFiles = NULL)
+
+</code></pre>
+#### Arguments
+
+* ``appDir``: Directory containing application. Defaults to current working directory.
+* ``appFiles``:  The files and directories and deploy (only if upload = TRUE). Can be NULL, in which case all the files in the directory containing the application are bundled. Takes precedence over appFileManifest if both are supplied.
+
+
+
+
+#### Examples
+```{r}
+
+# dependencies for the app in the current working dir
+appDependencies()
+
+# dependencies for an app in another directory
+appDependencies("~/projects/shiny/app1")
+
+```
+
+#### Details
+Dependencies are determined by parsing application source code and looking for calls to library,
+require, ::, and :::.
+Recursive dependencies are detected by examining the Depends, Imports, and ``LinkingTo`` fields of the packages immediately dependend on by the application.
+
+#### Value
+Returns a data frame listing the package dependencies detected for the application:
+package
+version
+Name of package
+Version of package
+
+#### Note
+Since the Suggests field is not included when determining recursive dependencies of packages, it’s possible that not every package required to run your application will be detected.
+In this case, you can force a package to be included dependency by inserting call(s) to require within your source directory. This code need not actually execute, for example you could create a standalone file named dependencies.R with the following code:
+
+<pre><code>
+require(xts)
+require(colorspace)
+</code></pre>
+This will force the xts and colorspace packages to be installed along with the rest of your appli-
+cation when it is deployed.
+See Also
+rsconnectPackages(Using Packages with rsconnect)

@@ -1,0 +1,18 @@
+helper Augment a shiny.tag with a question mark helper button
+
+#### Description
+
+Add an action button to your shiny UI with a question mark help icon (by default). In combination with observe_helpers this icon will produce a modal dialog box in the app, with content and title as speciﬁed. You may pass inline content for the modal, or else specify the name of a markdown ﬁle to include.
+
+#### Usage
+helper(shiny_tag, icon = "question-circle", colour = NULL, type = "markdown", title = "", content = "", size = "m", ...)
+observe_helpers 3
+
+#### Arguments 
+* shiny_tag A shiny element, such as an input or output (but any shiny tag will do). icon A character string of the name of the icon to display (font awesome). 
+* colour Any valid CSS colour for the icon. type Either ’markdown’ to include a helpﬁle, or ’inline’ to specify text. 
+* title Thetitletouseforyourmodal. Leaveas""tohavenotitle(forexample,ifyour markdown document has a header you wish to use instead). 
+* content If type = "markdown", the name of your markdown ﬁle; if type = "inline", a character vector of text/HTML to include. This will be pasted together with line breaks. You need not add ’.md’ to the markdown ﬁlename. size Either ’s’, ’m’ or ’l’ - the size of the modal dialog to display. ... Other arguments to pass to the div containing the icon.
+
+#### Examples
+helper(shiny::actionButton("go", "click me!"), icon = "exclamation", colour = "red", type = "markdown", content = "ClickHelp") # looks for 'helpfiles/ClickHelp.md'

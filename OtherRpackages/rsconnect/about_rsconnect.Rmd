@@ -1,0 +1,1046 @@
+---
+title: "rsconnect"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Package ‘rsconnect’
+January 10, 2019
+Type Package
+Title Deployment Interface for R Markdown Documents and Shiny
+Applications
+Version 0.8.13
+Author JJ Allaire
+Maintainer Jonathan McPherson <jonathan@rstudio.com>
+
+#### Description
+ Programmatic deployment interface for 'RPubs', 'shinyapps.io', and
+'RStudio Connect'. Supported content types include R Markdown documents,
+Shiny applications, Plumber APIs, plots, and static web content.
+Depends R (>= 3.0.0)
+Imports openssl, RCurl, jsonlite, packrat (>= 0.4.8-1), yaml (>=
+2.1.5), rstudioapi (>= 0.5)
+Suggests knitr, testthat, rmarkdown (>= 1.1), plumber (>= 0.3.2),
+reticulate, shiny, sourcetools, xtable
+License GPL-2
+RoxygenNote 6.1.1
+NeedsCompilation no
+Repository CRAN
+Date/Publication 2019-01-10 19:50:03 UTC
+R topics documented:
+rsconnect-package .
+accounts . . . . . .
+account
+#### Usage
+<pre><code>
+ . . .
+addAuthorizedUser
+addLinter . . . . .
+appDependencies .
+applications . . . .
+authorizedUsers . .
+configureApp . . .
+.
+.
+.
+.
+1
+.
+2
+3
+4
+5
+5
+6
+8
+9
+92
+rsconnect-package
+connectUser . . . . . .
+deployAPI . . . . . . .
+deployApp . . . . . . .
+deployDoc . . . . . . .
+deployments . . . . . .
+deploySite . . . . . . .
+deployTFModel . . . .
+forgetDeployment . . .
+generateAppName . .
+lint . . . . . . . . . . .
+linter . . . . . . . . . .
+listBundleFiles . . . .
+makeLinterMessage . .
+removeAuthorizedUser
+restartApp . . . . . . .
+rpubsUpload . . . . . .
+rsconnectOptions . . .
+rsconnectPackages . .
+servers . . . . . . . . .
+setAccountInfo . . . .
+setProperty . . . . . .
+showInvited . . . . . .
+showLogs . . . . . . .
+showMetrics . . . . . .
+showProperties . . . .
+show
+#### Usage
+<pre><code>
+ . . . . . .
+showUsers . . . . . . .
+taskLog . . . . . . . .
+tasks . . . . . . . . . .
+terminateApp . . . . .
+unsetProperty . . . . .
+writeManifest . . . . .
+.
+.
+
+
+Deployment Interface for R Markdown Documents and Shiny Appli-
+cations
+
+#### Description
+
+The ‘rsconnect“ package provides a programmatic deployment interface for RPubs, shinyapps.io,
+and RStudio Connect. Supported contents types include R Markdown documents, Shiny applica-
+tions, plots, and static web content.accounts
+3
+Managing Applications
+Deploy and manage applications with the following functions:
+•
+•
+•
+•
+•
+deployApp(): Deploy a Shiny application to a server.
+configureApp(): Configure an application currently running on a server.
+restartApp(): Restart an application currently running on a server.
+terminateApp(): Terminate an application currently running on a server.
+deployments(): List deployment records for a given application directory.
+More information on application management is available in the applications() help page.
+Managing Accounts and Users
+Manage accounts on the local system.
+• setAccountInfo(): Register an account.
+• removeAccount(): Remove an account.
+• accountInfo(): View information for a given account.
+More information on account management is available in the accounts() help page.
+accounts
+Account Management Functions
+
+#### Description
+
+Functions to enumerate and remove accounts on the local system. Prior to deploying applications
+you need to register your account on the local system.
+
+#### Usage
+<pre><code>
+
+accounts(server = NULL)
+accountInfo(name, server = NULL)
+removeAccount(name, server = NULL)
+
+</code></pre>
+#### Arguments
+
+server
+name
+Name of the server on which the account is registered (optional; see servers())
+Name of account
+
+#### Details
+You register an account using the setAccountInfo() function (for ShinyApps) or connectUser()
+function (for other servers). You can subsequently remove the account using the removeAccount
+function.
+The accounts and accountInfo functions are provided for viewing previously registered accounts.4
+account
+#### Usage
+<pre><code>
+
+Value
+accounts returns a data frame with the names of all accounts registered on the system and the
+servers on which they reside. accountInfo returns a list with account details.
+See Also
+Other Account functions: connectUser, setAccountInfo
+account
+#### Usage
+<pre><code>
+
+Show Account 
+#### Usage
+<pre><code>
+
+
+#### Description
+
+Show account usage
+
+#### Usage
+<pre><code>
+
+account
+#### Usage
+<pre><code>
+(account = NULL, server = NULL, usageType = "hours",
+from = NULL, until = NULL, interval = NULL)
+
+</code></pre>
+#### Arguments
+
+account Account name. If a single account is registered on the system then this parameter
+can be omitted.
+server Server name. Required only if you use the same account name on multiple
+servers.
+usageType Use metric to retreive (for example: "hours")
+from Date range starting timestamp (Unix timestamp or relative time delta such as
+"2d" or "3w").
+until Date range ending timestamp (Unix timestamp or relative time delta such as
+"2d" or "3w").
+interval Summarization interval. Data points at intervals less then this will be grouped.
+(Number of seconds or relative time delta e.g. "1h").
+Note
+This function only works for ShinyApps servers.
+
+
+## addAuthorizedUser
+
+Add authorized user to application
+
+#### Description
+
+Add authorized user to application
+
+#### Usage
+<pre><code>
+
+addAuthorizedUser(email, appDir = getwd(), appName = NULL,
+account = NULL, server = NULL, sendEmail = NULL,
+emailMessage = NULL)
+
+</code></pre>
+#### Arguments
+
+* ``email``: Email address of user to add.
+* ``appDir``: Directory containing application. Defaults to current working directory.
+* ``appName``: Name of application.
+* ``account``: Account name. If a single account is registered on the system then this parameter
+can be omitted.
+* ``server``: Server name. Required only if you use the same account name on multiple servers.
+* ``sendEmail``: Send an email letting the user know the application has been shared with them.
+* ``emailMessage``: Optional character vector of length 1 containing a custom message to send in email invitation. Defaults to NULL, which will use default invitation message.
+
+#### Note
+This function works only for ShinyApps servers.
+
+#### See Also
+removeAuthorizedUser() and showUsers()
+
+
+
+8
+applications
+
+authorizedUsers
+(Deprecated) List authorized users for an application
+
+#### Description
+
+(Deprecated) List authorized users for an application
+
+#### Usage
+<pre><code>
+
+authorizedUsers(appDir = getwd())
+
+</code></pre>
+#### Arguments
+
+appDir
+
+
+
+
+connectUser
+Connect User Account
+
+#### Description
+
+Connect a user account to the package so that it can be used to deploy and manage applications on
+behalf of the account.
+
+#### Usage
+<pre><code>
+
+connectUser(account = NULL, server = NULL, quiet = FALSE)
+
+</code></pre>
+#### Arguments
+
+* ``account``:   A name for the account to connect. Optional.
+server The server to connect to. Optional if there is only one server registered.
+quiet Whether or not to show messages and prompts while connecting the account.
+Details
+When this function is invoked, a web browser will be opened to a page on the target server where you
+will be prompted to enter your credentials. Upon successful authentication, your local installation
+of rsconnect and your server account will be paired, and you’ll be able to deploy and manage
+applications using the package without further prompts for credentials.
+See Also
+Other Account functions: accounts, setAccountInfo
+
+
+deployDoc
+Deploy a Document
+
+#### Description
+
+Deploys an application consisting of a single R Markdown document or other single file (such as
+an HTML or PDF document).
+
+#### Usage
+<pre><code>
+
+deployDoc(doc, ...)14
+deployments
+
+</code></pre>
+#### Arguments
+
+doc
+...
+Path to the document to deploy.
+Additional arguments to deployApp(). Do not supply appDir, appFiles, or
+appPrimaryDoc; these three parameters are automatically generated by deployDoc
+from the document.
+Details
+When deploying an R Markdown document, any files which are required to render and display the
+file must be deployed.
+This method discovers these additional files using rmarkdown::find_external_resources() from
+rmarkdown.
+If you find that the document is missing dependencies, either specify the dependencies explicitly in
+the document (the documentation for rmarkdown::find_external_resources() explains how to
+do this), or call deployApp() directly and specify your own file list in the appFiles parameter.
+See Also
+Other Deployment functions: applications, deployAPI, deployApp, deploySite, deployTFModel
+deployments
+List Application Deployments
+
+#### Description
+
+List deployment records for a given application.
+
+#### Usage
+<pre><code>
+
+deployments(appPath, nameFilter = NULL, accountFilter = NULL,
+serverFilter = NULL, excludeOrphaned = TRUE)
+
+</code></pre>
+#### Arguments
+
+appPath
+nameFilter
+accountFilter
+serverFilter
+excludeOrphaned
+The path to the content that was deployed, either a directory or an individual
+document.
+Return only deployments matching the given name (optional)
+Return only deployments matching the given account (optional)
+Return only deployments matching the given server (optional)
+If TRUE (the default), return only deployments made by a currently registered
+account. Deployments made from accounts that are no longer registered (via
+e.g.removeAccount()) will not be returned.
+Value
+Returns a data frame with at least following columns:deploySite
+15
+name
+account
+bundleId
+url
+when
+Name of deployed application
+Account owning deployed application
+Identifier of deployed application’s bundle
+URL of deployed application
+When the application was deployed (in seconds since the epoch)
+If additional metadata has been saved with the deployment record using the metadata argument to
+deployApp(), the frame will include additional columns.
+See Also
+applications() to get a list of deployments from the server, and deployApp() to create a new
+deployment.
+
+#### Examples
+```{r}
+
+## Not run:
+# Return all deployments of the ~/r/myapp directory made with the 'abc'
+# account
+deployments("~/r/myapp", accountFilter="abc")
+## End(Not run)
+```
+
+deploySite
+Deploy a Website
+
+#### Description
+
+Deploy an R Markdown website to a server.
+
+#### Usage
+<pre><code>
+
+deploySite(siteDir = getwd(), siteName = NULL, account = NULL,
+server = NULL, render = c("none", "local", "server"),
+launch.browser = getOption("rsconnect.launch.browser", interactive()),
+logLevel = c("normal", "quiet", "verbose"), lint = FALSE,
+metadata = list(), python = NULL)
+
+</code></pre>
+#### Arguments
+
+siteDir Directory containing website. Defaults to current working directory.
+siteName Name for the site (names must be unique within an account). Defaults to the
+base name of the specified siteDir, (or to a name provided by a custom site
+generation function).16
+deployTFModel
+account Account to deploy application to. This parameter is only required for the initial
+deployment of an application when there are multiple accounts configured on
+the system (see accounts).
+server Server name. Required only if you use the same account name on multiple
+servers.
+render Rendering behavior for site: "none" to upload a static version of the current
+contents of the site directory; "local" to render the site locally then upload it;
+"server" to render the site on the server. Note that for "none" and "local" R
+scripts (.R) and markdown documents (.Rmd and .md) will not be uploaded to
+the server.
+launch.browser If true, the system’s default web browser will be launched automatically after
+the app is started. Defaults to TRUE in interactive sessions only.
+logLevel One of "quiet", "normal" or "verbose"; indicates how much logging to the
+console is to be performed. At "quiet" reports no information; at "verbose",
+a full diagnostic log is captured.
+lint Lint the project before initiating deployment, to identify potentially problematic
+code?
+metadata Additional metadata fields to save with the deployment record. These fields will
+be returned on subsequent calls to deployments().
+python Full path to a python binary for use by reticulate. Required if reticulate
+is a dependency of the app being deployed. The specified python binary will be
+invoked to determine its version and to list the python packages installed in the
+environment.
+See Also
+Other Deployment functions: applications, deployAPI, deployApp, deployDoc, deployTFModel
+deployTFModel
+Deploy a TensorFlow saved model
+
+#### Description
+
+Deploys a directory containing a Tensorflow saved model file.
+
+#### Usage
+<pre><code>
+
+deployTFModel(modelDir, ...)
+
+</code></pre>
+#### Arguments
+
+modelDir Path to the saved model directory. MUST contain saved_model.pb or saved_model.pbtxt
+... Additional arguments to deployApp().forgetDeployment
+17
+Details
+Deploy a single Tensorflow saved model as a bundle. Should be passed a directory that contains the
+saved_model.pb or saved_model.pbtxt file, as well as any variables and assets necessary to load the
+model.
+A saved model directory might look like this:
+./1/
+./1/saved_model.pb or ./1/saved_model.pbtxt
+./1/variables/
+./1/variables/variables.data-00000-of-00001
+./1/variables/variables.index
+For information on creating saved models, see the Keras method keras::export_savedmodel.keras.engine.training.Mo
+or the TensorFlow method tensorflow::export_savedmodel(). If using the TensorFlow package
+for R, the official TensorFlow guide for saving and restoring models may be useful.
+References
+https://www.tensorflow.org/programmers_guide/saved_model#overview_of_saving_and_
+restoring_models
+#### See Also
+Other Deployment functions: applications, deployAPI, deployApp, deployDoc, deploySite
+forgetDeployment
+Forget Application Deployment
+
+#### Description
+
+Forgets about an application deployment. This is useful if the application has been deleted on the
+server, or the local deployment information needs to be reset.
+
+#### Usage
+<pre><code>
+
+forgetDeployment(appPath = getwd(), name = NULL, account = NULL,
+server = NULL, dryRun = FALSE, force = !interactive())
+
+</code></pre>
+#### Arguments
+
+appPath The path to the content that was deployed, either a directory or an individual
+document.
+name The name of the content that was deployed (optional)
+account The name of the account to which the content was deployed (optional)
+server The name of the server to which the content was deployed (optional)18
+generateAppName
+dryRun Set to TRUE to preview the files/directories to be removed instead of actually
+removing them. Defaults to FALSE.
+force Set to TRUE to remove files and directories without prompting. Defaults to
+FALSE in interactive sessions.
+Details
+This method removes from disk the file containing deployment metadata. If "name", "account", and
+"server" are all NULL, then all of the deployments for the application are forgotten; otherwise, only
+the specified deployment is forgotten.
+
+#### Value
+NULL, invisibly.
+
+
+## generateAppName
+Generate Application Name
+
+#### Description
+
+Generate a short name (identifier) for an application given an application title.
+
+#### Usage
+<pre><code>
+
+generateAppName(appTitle, appPath = NULL, account = NULL,
+unique = TRUE)
+
+</code></pre>
+#### Arguments
+
+appTitle A descriptive title for the application.
+appPath The path to the application’s content, either a directory or an individual docu-
+ment. Optional.
+account The account where the application will be deployed. Optional.
+unique Whether to try to generate a unique name.
+Details
+This function modifies the title until it forms a suitable application name. Suitable application
+names are 3 - 64 characters long and contain only alphanumeric characters.
+The function is intended to be used to find a name for a new application. If appPath and account
+are both specified, then the returned name will also be unique among locally known deployments
+of the directory (note that it is not guaranteed to be unique on the server). This behavior can be
+disabled by setting unique = FALSE.
+Value
+Returns a valid short name for the application.lint
+19
+
+#### Examples
+```{r}
+
+# Generate a short name for a sample application
+generateAppName("My Father's Country", "~/fathers-country", "myacct")
+lint
+Lint a Project
+
+#### Description
+
+Takes the set of active linters (see addLinter()), and applies them to all files within a project.
+
+#### Usage
+<pre><code>
+
+lint(project, files = NULL, appPrimaryDoc = NULL)
+
+</code></pre>
+#### Arguments
+
+project Path to a project directory.
+files Specific files to lint. Can be NULL, in which case all the files in the directory
+will be linted.
+appPrimaryDoc The primary file in the project directory. Can be NULL, in which case it’s in-
+ferred (if possible) from the directory contents.
+
+## ``linter``
+Create a Linter
+
+#### Description
+
+Generate a linter, which can identify errors or problematic regions in a project.
+
+#### Usage
+<pre><code>
+
+linter(apply, takes, message, suggestion)
+
+</code></pre>
+#### Arguments
+
+apply Function that, given the content of a file, returns the indices at which problems
+were found.
+takes Function that, given a set of paths, returns the subset of paths that this linter
+uses.
+message Function that, given content and lines, returns an informative message for the
+user. Typically generated with makeLinterMessage().
+suggestion String giving a prescribed fix for the linted problem.20
+listBundleFiles
+
+#### Examples
+```{r}
+
+addLinter("no.capitals", linter(
+## Identify lines containing capital letters -- either by name or by index
+apply = function(content, ...) {
+grep("[A-Z]", content)
+},
+## Only use this linter on R files (paths ending with .r or .R)
+takes = function(paths) {
+grep("[rR]$", paths)
+},
+# Use the default message constructor
+message = function(content, lines, ...) {
+makeLinterMessage("Capital letters found on the following lines", content, lines)
+},
+))
+# Give a suggested prescription
+suggest = "Do not use capital letters in these documents."
+```
+
+listBundleFiles
+List Files to be Bundled
+
+#### Description
+
+Given a directory containing an application, returns the names of the files to be bundled in the
+application.
+
+#### Usage
+<pre><code>
+
+listBundleFiles(appDir)
+
+</code></pre>
+#### Arguments
+
+appDir
+Directory containing the application.
+Details
+This function computes results similar to a recursive directory listing from list.files(), with the
+following constraints:
+1. If the total size of the files exceeds the maximum bundle size, no more files are listed. The
+maximum bundle size is controlled by the rsconnect.max.bundle.size option.
+2. If the total size number of files exceeds the maximum number to be bundled, no more files are
+listed. The maximum number of files in the bundle is controlled by the rsconnect.max.bundle.files
+option.
+3. Certain files and folders that don’t need to be bundled, such as those containing internal ver-
+sion control and RStudio state, are excluded.makeLinterMessage
+21
+Value
+Returns a list containing the following elements:
+contents
+totalSize
+A list of the files to be bundled
+The total size of the files
+
+
+
+servers
+Server Management Functions
+
+#### Description
+
+Functions to manage the list of known servers to which rsconnect can deploy and manage applica-
+tions.
+
+#### Usage
+<pre><code>
+
+servers(local = FALSE)
+discoverServers(quiet = FALSE)
+addConnectServer(url, name = NULL, certificate = NULL, quiet = FALSE)
+addServer(url, name = NULL, certificate = NULL, quiet = FALSE)
+removeServer(name)
+serverInfo(name)
+addServerCertificate(name, certificate, quiet = FALSE)
+
+</code></pre>
+#### Arguments
+
+local Return only local servers (i.e. not shinyapps.io)
+quiet Suppress output and prompts where possible.
+url Server’s URL. Should look like http://servername/ or http://servername:port/.
+name Optional nickname for the server. If none is given, the nickname is inferred from
+the server’s hostname.
+certificate Optional; a path a certificate file to be used when making SSL connections to
+the server. The file’s contents are copied and stored by the rsconnect package.
+Can also be a character vector containing the certificate’s contents.
+Details
+Register a server with addServer or discoverServers (the latter is useful only if your administra-
+tor has configured server autodiscovery). Once a server is registered, you can connect to an account
+on the server using connectUser().
+The servers and serverInfo functions are provided for viewing previously registered servers.
+There is always at least one server registered (the shinyapps.io server)28
+setAccountInfo
+Value
+servers returns a data frame with registered server names and URLs. serverInfo returns a list
+with details for a particular server.
+
+#### Examples
+```{r}
+
+## Not run:
+# register a local server
+addServer("http://myrsconnect/", "myserver")
+# list servers
+servers(local = TRUE)
+# connect to an account on the server
+connectUser(server = "myserver")
+## End(Not run)
+```
+
+setAccountInfo
+Set ShinyApps Account Info
+
+#### Description
+
+Configure a ShinyApps account for publishing from this system.
+
+#### Usage
+<pre><code>
+
+setAccountInfo(name, token, secret)
+
+</code></pre>
+#### Arguments
+
+name Name of account to save or remove
+token User token for the account
+secret User secret for the account
+See Also
+Other Account functions: accounts, connectUser
+
+#### Examples
+```{r}
+
+## Not run:
+# register an account
+setAccountInfo("user", "token", "secret")
+# remove the same account
+removeAccount("user")
+## End(Not run)
+```
+
+
+showMetrics
+Show Application Metrics
+
+#### Description
+
+Show application metrics of a currently deployed application
+
+#### Usage
+<pre><code>
+
+showMetrics(metricSeries, metricNames, appDir = getwd(),
+appName = NULL, account = NULL, server = NULL, from = NULL,
+until = NULL, interval = NULL)
+
+</code></pre>
+#### Arguments
+
+metricSeries Metric series to query. Refer to the shinyapps.io documentation for available
+series.
+metricNames Metric names in the series to query. Refer to the shinyapps.io documentation for
+available metrics.
+appDir * ``appDir``: Directory containing application. Defaults to current working directory.
+appName Name of application
+account Account name. If a single account is registered on the system then this parameter
+can be omitted.
+server Server name. Required only if you use the same account name on multiple
+servers.
+from Date range starting timestamp (Unix timestamp or relative time delta such as
+"2d" or "3w").32
+show
+#### Usage
+<pre><code>
+
+until Date range ending timestamp (Unix timestamp or relative time delta such as
+"2d" or "3w").
+interval Summarization interval. Data points at intervals less then this will be grouped.
+(Relative time delta e.g. "120s" or "1h" or "30d").
+Note
+This function only works for ShinyApps servers.
+showProperties
+Show Application property
+
+#### Description
+
+Show propreties of an application deployed to ShinyApps.
+
+#### Usage
+<pre><code>
+
+showProperties(appPath = getwd(), appName = NULL, account = NULL)
+
+</code></pre>
+#### Arguments
+
+appPath Directory or file that was deployed. Defaults to current working directory.
+appName Name of application
+account Account name. If a single account is registered on the system then this parameter
+can be omitted.
+Note
+This function works only for ShinyApps servers.
+show
+#### Usage
+<pre><code>
+
+Show Application 
+#### Usage
+<pre><code>
+
+
+#### Description
+
+Show application usage of a currently deployed application
+
+#### Usage
+<pre><code>
+
+show
+#### Usage
+<pre><code>
+(appDir = getwd(), appName = NULL, account = NULL,
+server = NULL, usageType = "hours", from = NULL, until = NULL,
+interval = NULL)showUsers
+33
+
+</code></pre>
+#### Arguments
+
+appDir
+appName
+account
+server
+usageType
+from
+until
+interval
+* ``appDir``: Directory containing application. Defaults to current working directory.
+Name of application
+Account name. If a single account is registered on the system then this parameter
+can be omitted.
+Server name. Required only if you use the same account name on multiple
+servers.
+Use metric to retreive (for example: "hours")
+Date range starting timestamp (Unix timestamp or relative time delta such as
+"2d" or "3w").
+Date range ending timestamp (Unix timestamp or relative time delta such as
+"2d" or "3w").
+Summarization interval. Data points at intervals less then this will be grouped.
+(Relative time delta e.g. "120s" or "1h" or "30d").
+Note
+This function only works for ShinyApps servers.
+showUsers
+List authorized users for an application
+
+#### Description
+
+List authorized users for an application
+
+#### Usage
+<pre><code>
+
+showUsers(appDir = getwd(), appName = NULL, account = NULL,
+server = NULL)
+
+</code></pre>
+#### Arguments
+
+appDir
+appName
+account
+server
+* ``appDir``: Directory containing application. Defaults to current working directory.
+Name of application.
+Account name. If a single account is registered on the system then this parameter
+can be omitted.
+Server name. Required only if you use the same account name on multiple
+servers.
+Note
+This function works only for ShinyApps servers.
+See Also
+addAuthorizedUser() and showInvited()34
+tasks
+taskLog
+Show task log
+
+#### Description
+
+Writes the task log for the given task
+
+#### Usage
+<pre><code>
+
+taskLog(taskId, account = NULL, server = NULL, output = NULL)
+
+</code></pre>
+#### Arguments
+
+taskId Task Id
+account Account name. If a single account is registered on the system then this parameter
+can be omitted.
+server Server name. Required only if you use the same account name on multiple
+servers (see servers())
+output Where to write output. Valid values are NULL or stderr
+See Also
+tasks()
+
+#### Examples
+```{r}
+
+## Not run:
+# write task log to stdout
+taskLog(12345)
+# write task log to stderr
+taskLog(12345, output="stderr")
+## End(Not run)
+```
+
+tasks
+
+#### Description
+
+List Tasks
+List TasksterminateApp
+35
+
+#### Usage
+<pre><code>
+
+tasks(account = NULL, server = NULL)
+
+</code></pre>
+#### Arguments
+
+account Account name. If a single account is registered on the system then this parameter
+can be omitted.
+server Server name. Required only if you use the same account name on multiple
+servers (see servers())
+Value
+Returns a data frame with the following columns:
+id
+action
+status
+created_time
+finished_time
+Task id
+Task action
+Current task status
+Task creation time
+Task finished time
+See Also
+taskLog()
+
+#### Examples
+```{r}
+
+## Not run:
+# list tasks for the default account
+tasks()
+## End(Not run)
+```
+
+terminateApp
+Terminate an Application
+
+#### Description
+
+Terminate and archive a currently deployed ShinyApps application.
+
+#### Usage
+<pre><code>
+
+terminateApp(appName, account = NULL, server = NULL, quiet = FALSE)36
+unsetProperty
+
+</code></pre>
+#### Arguments
+
+appName Name of application to terminate
+account Account name. If a single account is registered on the system then this parameter
+can be omitted.
+server Server name. Required only if you use the same account name on multiple
+servers (see servers())
+quiet Request that no status information be printed to the console during the termina-
+tion.
+Note
+This function only works for ShinyApps servers.
+See Also
+applications(), deployApp(), and restartApp()
+
+#### Examples
+```{r}
+
+## Not run:
+# terminate an application
+terminateApp("myapp")
+## End(Not run)
+unsetProperty
+Unset Application property
+
+#### Description
+
+Unset a property on currently deployed ShinyApps application (restoring to its default value)
+
+#### Usage
+<pre><code>
+
+unsetProperty(propertyName, appPath = getwd(), appName = NULL,
+account = NULL, force = FALSE)
+
+</code></pre>
+#### Arguments
+
+propertyName Name of property to unset
+appPath Directory or file that was deployed. Defaults to current working directory.
+appName Name of application
+account Account name. If a single account is registered on the system then this parameter
+can be omitted.
+force Forcibly unset the propertywriteManifest
+37
+Note
+This function only works for ShinyApps servers.
+
+#### Examples
+```{r}
+
+## Not run:
+# unset application package cache property to revert to default
+unsetProperty("application.package.cache")
+## End(Not run)
+```
+writeManifest
+Create a manifest.json describing deployment requirements.
+
+#### Description
+
+Given a directory content targeted for deployment, write a manifest.json into that directory describing the deployment requirements for that content.
+
+#### Usage
+<pre><code>
+
+writeManifest(appDir = getwd(), appFiles = NULL,
+appPrimaryDoc = NULL, contentCategory = NULL, python = NULL)
+
+</code></pre>
+#### Arguments
+
+appDir Directory containing the content (Shiny application, R Markdown document, etc).
+appFiles Optional. The full set of files and directories to be included in future deployments of this content. Used when computing dependency requirements. When
+NULL, all files in appDir are considered.
+appPrimaryDoc Optional. Specifies the primary document in a content directory containing more than one. If NULL, the primary document is inferred from the file list.
+contentCategory
+python
+Optional. Specifies the kind of content being deployed (e.g. "plot" or "site").
+Full path to a python binary for use by reticulate. The specified python binary will be invoked to determine its version and to list the python packages installed
+in the environment.

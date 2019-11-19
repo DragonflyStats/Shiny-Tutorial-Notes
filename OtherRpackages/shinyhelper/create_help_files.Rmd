@@ -1,0 +1,19 @@
+create_help_files 
+
+Create Directory of Help Files
+
+#### Description 
+
+Helper function to be run interactively - it will initialise a directory of help ﬁles (.md ﬁles) in help_dir, using the vector of ﬁles. Pass it a vector of ﬁlenames which you which to use with type = "markdown" in your calls to helper.
+
+#### Usage
+create_help_files(files, help_dir = "helpfiles")
+
+#### Arguments 
+* files A character vector of names to use in creating help ﬁles. 
+* help_dir A character string of the directory to use for help ﬁles.
+
+#### Examples
+<pre><code>
+create_help_files(files = c("Clusters", "Columns", "PlotHelp"), help_dir = "helpfiles")
+</code></pre>

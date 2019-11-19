@@ -1,0 +1,37 @@
+---
+title: "``rsconnect::removeAuthorizedUser()``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Remove authorized user from an application
+
+#### Description
+
+Remove authorized user from an application
+
+#### Usage
+
+<pre><code>
+
+removeAuthorizedUser(user, appDir = getwd(), appName = NULL,account = NULL, server = NULL)
+
+</code></pre>
+
+#### Arguments
+
+* ``user``: The user to remove. Can be id or email address.
+
+* ``appName``: Name of application.
+* ``Account name``. If a single account is registered on the system then this parameter can be omitted. 
+* ``account``: appDir: Directory containing application. Defaults to current working directory.
+* ``server``: Server name: Required only if you use the same account name on multiple servers.
+
+#### Note
+This function works only for ShinyApps servers.
+
+#### See Also
+``addAuthorizedUser()`` and ``showUsers()``

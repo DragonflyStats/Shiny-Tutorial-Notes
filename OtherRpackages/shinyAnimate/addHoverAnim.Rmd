@@ -1,0 +1,50 @@
+---
+title: "``shinyAnimate::withAnim``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(shinyAnimate)
+```
+``addHoverAnim``
+
+Add animation on mouse hover for UI element.
+
+#### Description
+
+Add animation on mouse hover for UI element.
+
+#### Usage
+<pre><code>
+
+addHoverAnim(session, id, type = NULL)
+
+</code></pre>
+#### Arguments
+
+* session The session object passed to function given to shinyServer.
+* id the id of the UI element for which you want animation on mouse hover.
+* type The type of animation to use, valid values correspond to the types in https:
+//daneden.github.io/animate.css/
+
+
+
+#### Examples
+<pre><code>
+
+library(shiny)
+library(shinyanimate)
+ui <- fluidPage(
+  withAnim(),
+  tags$div(id = 'title', h1('HOVER ON ME'))
+)
+server <- function(input, output, session){
+  observe(addHoverAnim(session, 'title', 'bounce'))
+}
+shinyApp(ui, server)
+
+</code></pre>
+
+#### See Also
+withAnim

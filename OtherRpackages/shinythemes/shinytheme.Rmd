@@ -1,0 +1,32 @@
+shinytheme
+Return the URL for a Shiny theme
+
+#### Description
+
+The result of this function should be used as the theme argument for bootstrapPage, fluidPage,
+navbarPage, or fixedPage.
+
+#### Usage
+<pre><code>
+
+shinytheme(theme = NULL)
+
+</code></pre>
+#### Arguments
+
+theme
+Name of a theme.
+See Also
+The main shinythemes page for information about available themes and more detailed examples.
+
+#### Examples
+
+## Not run:
+shinyApp(
+ui = fluidPage(theme = shinytheme("united"),
+...
+),
+server = function(input, output) { }
+)
+## End(Not run)
+```

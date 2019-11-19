@@ -1,0 +1,46 @@
+---
+title: "``rsconnect::setProperty``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(rsconnect)
+```
+
+setProperty
+Set Application property
+
+#### Description
+
+Set a property on currently deployed ShinyApps application.
+
+#### Usage
+<pre><code>
+
+setProperty(propertyName, propertyValue, appPath = getwd(),
+appName = NULL, account = NULL, force = FALSE)
+
+</code></pre>
+#### Arguments
+
+propertyName Name of property to set
+propertyValue Nalue to set property to
+appPath Directory or file that was deployed. Defaults to current working directory.
+appName Name of application
+account Account name. If a single account is registered on the system then this parameter
+can be omitted.
+force Forcibly set the property
+Note
+This function only works for ShinyApps servers.
+
+#### Examples
+```{r}
+
+## Not run:
+# set instance size for an application
+setProperty("application.instances.count", 1)
+# disable application package cache
+setProperty("application.package.cache", FALSE)
+## End(Not run)30
+showLogs

@@ -1,0 +1,51 @@
+---
+title: "``shinyAnimate::withAnim``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(shinyAnimate)
+```
+## ``startAnim``
+
+Start an animation
+
+#### Description
+
+Start an animation of the UI element.
+
+#### Usage
+<pre><code>
+
+startAnim(session, id, type = NULL)
+
+</code></pre>
+
+#### Arguments
+
+* ``session`` : The session object passed to function given to shinyServer.
+* ``id`` : the id of the UI element for which you want to add animation.
+* ``type`` : The type of animation to use, valid values correspond to the types in https://daneden.github.io/animate.css/
+  
+
+
+#### Examples
+<pre><code>
+library(shiny)
+library(shinyanimate)
+ui <- fluidPage(
+  withAnim(),
+  tags$div(id = 'title', h1('ANIMATION')),
+  actionButton(inputId = "button", label = "Animate")
+)
+server <- function(input, output, session){
+  observeEvent(input$button,{
+    startAnim(session, 'title', 'bounce')
+  })
+}
+shinyApp(ui, server)
+</code></pre>
+  
+#### See Also
+withAnim

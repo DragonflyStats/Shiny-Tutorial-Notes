@@ -1,0 +1,8 @@
+shinyhelper_demo Launch the Example App
+Description An example app demonstrating the use of the shinyhelper package.
+Usage
+shinyhelper_demo()
+shinyhelper_demo 5
+Examples
+## Not run: if (interactive()) { shinyhelper_demo() }
+## End(Not run)

@@ -1,0 +1,11 @@
+observe_helpers Observe Helper Action Buttons
+Description Function to show a modal dialog, observing each of the help icons in the app.
+Usage
+observe_helpers(session = shiny::getDefaultReactiveDomain(), help_dir = "helpfiles", withMathJax = FALSE)
+Arguments session The session object in your shiny app. help_dir A character string of the directory containing your helpﬁles. withMathJax If TRUE theMathJaxlibraryisaddedtoallowformathexpressionsinmarkdown content.
+4 shinyhelper_demo
+Examples
+server <- function(input, output, session){
+# use anywhere in your server.R script observe_helpers()
+# rest of server.R # ... # ...
+}

@@ -1,0 +1,29 @@
+---
+title: "``shinyAnimate::withAnim``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(shinyAnimate)
+```
+
+## ``withAnim``
+Set up Shiny app to use animation
+
+#### Description
+
+This function needs to be added in the UI if to want to add animation to your UI elements using
+shinyanimate.
+
+#### Usage
+<pre><code>
+
+withAnim()
+</code></pre>
+
+#### Examples
+```{r}
+
+if(interactive()){withAnim()}
+```

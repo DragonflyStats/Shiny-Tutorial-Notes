@@ -1,0 +1,28 @@
+Package ‘shinythemes’
+November 6, 2018
+Title Themes for Shiny
+Version 1.1.2
+
+#### Description
+ Themes for use with Shiny. Includes several Bootstrap themes
+from <http://bootswatch.com/>, which are packaged for use with Shiny
+applications.
+Depends R (>= 3.0.0)
+Imports shiny (>= 0.11)
+URL http://rstudio.github.io/shinythemes/
+License GPL-3 | file LICENSE
+RoxygenNote 6.1.0.9000
+NeedsCompilation no
+Author Winston Chang [aut, cre],
+RStudio [cph],
+Thomas Park [ctb, cph] (Bootswatch themes),
+Lukasz Dziedzic [ctb, cph] (Lato font),
+Nathan Willis [ctb, cph] (News Cycle font),
+Google Corporation [ctb, cph] (Open Sans and Roboto fonts),
+Matt McInerney [ctb, cph] (Raleway font),
+Adobe Systems Incorporated [ctb, cph] (Source Sans Pro font),
+Canonical Ltd [ctb, cph] (Ubuntu font)
+Maintainer Winston Chang <winston@rstudio.com>
+Repository CRAN
+Date/Publication 2018-11-06 17:00:03 UTC
+

@@ -1,0 +1,60 @@
+---
+title: "``rsconnect::applications``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(rsconnect)
+```
+
+
+List Deployed Applications
+
+#### Description
+
+List all applications currently deployed for a given account.
+
+#### Usage
+<pre><code>
+
+applications(account = NULL, server = NULL)
+
+</code></pre>
+#### Arguments
+
+* account Account name. If a single account is registered on the system then this parameter can be omitted.
+* server Server name. Required only if you use the same account name on multiple servers.
+
+#### Value
+Returns a data frame with the following columns:
+
+name
+url
+config_url
+status
+
+Name of application
+URL where application can be accessed
+URL where application can be configured
+Current status of application. Valid values are pending, deploying, running, terminating, and terminated.
+
+#### Note
+To register an account you call the setAccountInfo() function.
+See Also
+deployApp(), terminateApp()
+Other Deployment functions: deployAPI, deployApp, deployDoc, deploySite, deployTFModel
+
+#### Examples
+```{r}
+
+## Not run:
+# list all applications for the default account
+applications()
+# list all applications for a specific account
+applications("myaccount")
+# view the list of applications in the data viewer
+View(applications())
+## End(Not run)
+
+```

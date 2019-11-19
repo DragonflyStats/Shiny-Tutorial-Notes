@@ -1,0 +1,33 @@
+---
+title: "``deployAPI``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Deploy a Plumber API
+
+#### Description
+
+Deploys an application consisting of plumber API routes. The given directory must contain a script returning a plumb object or a plumber API definition.
+
+#### Usage
+<pre><code>
+
+deployAPI(api, ...)
+
+</code></pre>
+
+#### Arguments
+
+* ``api``: Path to the API project directory. Must contain either ``entrypoint.R`` or ``plumber.R``
+* ``...``: Additional arguments to ``deployApp()``.
+
+#### Details
+Deploy a plumber API definition by either supplying a directory containing plumber.R (an API definition) or entrypoint.R that returns a plumb object created by ``plumber::plumb()``. See the plumber documentation for more information.
+
+#### See Also
+Other Deployment functions: applications, deployApp, deployDoc, deploySite, deployTFModel

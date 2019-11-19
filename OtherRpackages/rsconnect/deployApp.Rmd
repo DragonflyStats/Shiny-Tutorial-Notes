@@ -1,0 +1,77 @@
+---
+title: "``rsconnect::deployApp()``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+Deploy an Application
+
+#### Description
+
+Deploy a shiny application, an RMarkdown document, a plumber API, or HTML content to a server.
+
+#### Usage
+<pre><code>
+
+deployApp(appDir = getwd(), appFiles = NULL, appFileManifest = NULL,
+appPrimaryDoc = NULL, appSourceDoc = NULL, appName = NULL,
+appTitle = NULL, appId = NULL, contentCategory = NULL,
+account = NULL, server = NULL, upload = TRUE, recordDir = NULL,
+launch.browser = getOption("rsconnect.launch.browser", interactive()),
+logLevel = c("normal", "quiet", "verbose"), lint = TRUE, metadata = list(),
+forceUpdate = getOption("rsconnect.force.update.apps", FALSE), python = NULL)
+
+</code></pre>
+
+#### Arguments
+
+* ``appDir``: Directory containing application. Defaults to current working directory.
+* ``appFiles``:  The files and directories and deploy (only if upload = TRUE). Can be NULL, in which case all the files in the directory containing the application are bundled. Takes precedence over appFileManifest if both are supplied.
+* ``appFileManifest`` : An alternate way to specify the files to be deployed; a file containing the names of the files, one per line, relative to the appDir.
+appPrimaryDoc If the application contains more than one document, this parameter indicates the primary one, as a path relative to appDir. Can be NULL, in which case the primary document is inferred from the contents being deployed.
+* ``appSourceDoc`` If the application is composed of static files (e.g HTML), this parameter indicates the source document, if any, as a fully qualified path. Deployment information returned by deployments() is associated with the source document.
+* ``appName``: Name of application (names must be unique within an account). Defaults to the base name of the specified appDir.
+* ``appTitle``: Free-form descriptive title of application. Optional; if supplied, will often be displayed in favor of the name. When deploying a new application, you may supply only the appTitle to receive an auto-generated appName.
+* ``appId``: If updating an application, the ID of the application being updated. Optional unless updating an app owned by another user.
+* ``contentCategory`` : Optional; the kind of content being deployed (e.g. "plot" or "site").
+* ``account``: Account to deploy application to. This parameter is only required for the initial deployment of an application when there are multiple accounts configured on the system (see accounts).
+* server Server name. Required only if you use the same account name on multiple servers.
+* ``upload``: If TRUE (the default) then the application is uploaded from the local system prior to deployment. If FALSE then it is re-deployed using the last version that was uploaded.
+* recordDir Directory where publish record is written. Can be NULL in which case record will be written to the location specified with appDir.
+* ``launch.browser``: If true, the system’s default web browser will be launched automatically after the app is started. Defaults to TRUE in interactive sessions only.
+* logLevel One of "quiet", "normal" or "verbose"; indicates how much logging to the console is to be performed. At "quiet" reports no information; at "verbose", a full diagnostic log is captured.
+* ``lint``: Lint the project before initiating deployment, to identify potentially problematic code?
+* ``metadata``: Additional metadata fields to save with the deployment record. These fields will be returned on subsequent calls to deployments().
+* ``forceUpdate`` If TRUE, update any previously-deployed app without asking. If FALSE, ask to update. If unset, defaults to the value of getOption("rsconnect.force.update.apps", FALSE).
+* ``python``: Full path to a python binary for use by reticulate. Required if reticulate is a dependency of the app being deployed. The specified python binary will be invoked to determine its version and to list the python packages installed in the environment.
+
+
+#### Examples
+```{r}
+
+## Not run:
+# deploy the application in the current working dir
+deployApp()
+# deploy an application in another directory
+deployApp("~/projects/shiny/app1")
+# deploy using an alternative application name and title
+deployApp("~/projects/shiny/app1", appName = "myapp",
+appTitle = "My Application")
+# deploy specifying an explicit account name, then
+# redeploy with no arguments (will automatically use
+# the previously specified account)
+deployApp(account = "jsmith")
+deployApp()
+# deploy but don't launch a browser when completed
+deployApp(launch.browser = FALSE)
+## End(Not run)
+```
+
+See Also
+applications(), terminateApp(), and restartApp()
+Other Deployment functions: applications, deployAPI, deployDoc, deploySite, deployTFModel

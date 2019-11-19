@@ -1,0 +1,44 @@
+---
+title: "``rsconnect::restartApp()``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(rsconnect)
+```
+
+
+Restart an Application
+
+#### Description
+
+Restart an application currently running on a remote server.
+
+#### Usage
+<pre><code>
+
+restartApp(appName, account = NULL, server = NULL, quiet = FALSE)
+
+</code></pre>
+#### Arguments
+
+* ``appName``: Name of application to restart
+* ``account``: Account name. If a single account is registered on the system then this parameter can be omitted.
+* ``server``: Server name. Required only if you use the same account name on multiple servers (see ``servers()``)
+* ``quiet``: Request that no status information be printed to the console during the operation.
+
+
+#### Examples
+```{r}
+
+## Not run:
+# restart an application
+restartApp("myapp")
+## End(Not run)rpubsUpload
+```
+
+Note
+This function works only for ShinyApps servers.
+See Also
+applications(), deployApp(), and terminateApp()

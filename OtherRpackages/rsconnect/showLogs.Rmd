@@ -1,0 +1,39 @@
+---
+title: "``rsconnect::showLogs()``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+showLogs
+Show Application Logs
+
+#### Description
+
+Show the logs for a deployed ShinyApps application.
+
+#### Usage
+<pre><code>
+
+showLogs(appPath = getwd(), appFile = NULL, appName = NULL,
+account = NULL, entries = 50, streaming = FALSE)
+
+</code></pre>
+#### Arguments
+
+* appPath The path to the directory or file that was deployed.
+8 appFile The path to the R source file that contains the application (for single file appli-
+cations).
+* appName The name of the application to show logs for. May be omitted if only one appli-
+cation deployment was made from appPath.
+* account The account under which the application was deployed. May be omitted if only
+one account is registered on the system.
+* entries The number of log entries to show. Defaults to 50 entries.
+* streaming Whether to stream the logs. If TRUE, then the function does not return; instead,
+* log entries are written to the console as they are made, until R is interrupted.
+
+Defaults to FALSE.
+Note
+This function works only for ShinyApps servers.
