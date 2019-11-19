@@ -1,0 +1,75 @@
+---
+title: "``shinyWidgets::updateAwesomeRadio``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Change the value of a radio input on the client
+
+#### Description
+
+Change the value of a radio input on the client
+
+#### Usage
+<pre><code>
+
+updateAwesomeRadio(session, inputId, label = NULL, choices = NULL,
+selected = NULL, inline = FALSE, status = "primary", checkbox = FALSE)
+
+</code></pre>
+#### Arguments
+
+* ``session``:  The session object passed to function given to shinyServer.
+* ``inputId``:   The id of the input object.
+* ``label  ``: Input label.
+* ``choices``:  List of values to select from (if elements of the list are named then that name rather than the value is displayed to the user)
+* ``selected``:  The initially selected value
+* ``inline``:  If TRUE, render the choices inline (i.e. horizontally)
+* ``status``:  Color of the buttons
+* ``checkbox``:  Checkbox style
+
+
+#### Examples
+<pre><code>
+
+## Not run:
+if (interactive()) {
+library("shiny")
+library("shinyWidgets")
+ui <- fluidPage(
+awesomeRadio(
+inputId = "somevalue",
+choices = c("A", "B", "C"),
+label = "My label"
+),
+verbatimTextOutput(outputId = "res"),
+)
+actionButton(inputId = "updatechoices", label = "Random choices"),
+textInput(inputId = "updatelabel", label = "Update label")
+server <- function(input, output, session) {
+output$res <- renderPrint({
+input$somevalue
+})
+observeEvent(input$updatechoices, {
+updateAwesomeRadio(
+session = session, inputId = "somevalue",
+choices = sample(letters, sample(2:6))
+)
+})
+observeEvent(input$updatelabel, {
+updateAwesomeRadio(
+session = session, inputId = "somevalue",
+label = input$updatelabel
+)
+}, ignoreInit = TRUE)
+}
+shinyApp(ui = ui, server = server)
+}
+## End(Not run)
+</code></pre>
+
+See Also
+awesomeRadio96
+updateAwesomeRadio

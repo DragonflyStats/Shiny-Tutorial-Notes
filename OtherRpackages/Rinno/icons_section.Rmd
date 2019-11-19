@@ -1,0 +1,41 @@
+icons_section
+Icons Section of ISS
+
+#### Description
+
+Shortcuts Inno Setup creates in the Start Menu and/or other locations, such as the desktop. For more information, see [Icons] section, or call ``inno_doc()``.
+
+#### Usage
+<pre><code>
+
+icons_section(iss, app_dir, app_desc = "", app_icon = "default.ico",
+prog_menu_icon = TRUE, desktop_icon = TRUE)
+
+</code></pre>
+#### Arguments
+
+* ``iss`` : Character vector which cumulatively becomes an Inno Setup Script (ISS).
+* ``app_dir`` : Development app’s directory, defaults to getwd().
+* ``app_desc`` : Description of Shiny app, appears on mouse-over of icons.
+* ``app_icon``: Filename of icon in app_dir, used for desktop and program menu shortcuts.
+* ``prog_menu_icon``: Logical. If TRUE, create a program menu shortcut.
+* ``desktop_icon``: Logical. If TRUE, create a desktop shortcut.
+
+
+#### Examples
+<pre><code>
+
+## Not run:
+start_iss('myapp') %>%
+icons_section(app_desc = 'This Shiny app is awesome!')
+## End(Not run)
+</code></pre>
+
+#### Value
+Chainable character vector, which can be used as the text argument of writeLines to generate an
+ISS.
+Author(s)
+Jonathan M. Hill
+See Also
+get_R, copy_installation, create_config, create_bat, directives_section, setup_section,
+languages_section, tasks_section, files_section, icons_section, run_section, and code_section.

@@ -1,0 +1,28 @@
+
+Package ‘argonDash’
+December 3, 2018
+Type Package
+Title Argon Shiny Dashboard Template
+Version 0.1.0
+Maintainer David Granjon <dgranjon@ymail.com>
+#### Description Create awesome 'Bootstrap 4' dashboards powered by 'Argon'.
+See more here <https://rinterface.github.io/argonDash/>.
+* License GPL-2
+*  Imports shiny, htmltools, argonR
+* Suggests magrittr
+* URL https://github.com/RinteRface/argonDash
+* BugReports https://github.com/RinteRface/argonDash/issues
+* Encoding UTF-8
+* LazyData true
+* RoxygenNote 6.1.1
+* NeedsCompilation no
+* Author David Granjon [aut, cre],
+RinteRface [cph],
+Creative Tim [ctb, cph] (Argon theme for Bootstrap 4)
+Repository CRAN
+Date/Publication 2018-12-03 09:20:07 UTC
+
+
+
+
+

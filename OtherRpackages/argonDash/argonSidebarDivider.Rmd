@@ -1,0 +1,11 @@
+
+## argonSidebarDivider
+A divider to put inside argonDashSidebar
+#### Description
+A divider to put inside argonDashSidebar
+
+#### Usage
+<pre><code>
+
+argonSidebarDivider()
+</code></pre>

@@ -1,0 +1,67 @@
+colorSelectorInput
+Color Selector Input
+
+#### Description
+
+Choose between a restrictive set of colors.
+
+#### Usage
+<pre><code>
+
+colorSelectorInput(inputId, label, choices, selected = NULL,
+mode = c("radio", "checkbox"), display_label = FALSE, ncol = 10)
+colorSelectorExample()
+colorSelectorDrop(inputId, label, choices, selected = NULL,
+display_label = FALSE, ncol = 10, circle = TRUE, size = "sm",
+up = FALSE, width = NULL)
+
+</code></pre>
+#### Arguments
+
+* ``inputId``:   The input slot that will be used to access the value.
+* ``label``:  Display label for the control, or NULL for no label.
+* ``choices``: A list of colors, can be a list of named list, see example.
+* ``selected``: Default selected color, if NULL the first color for mode = 'radio' and none for mode = 'checkbox' mode 'radio' for only one choice, 'checkbox' for selecting multiple values.
+* ``display_label``: Display list’s names after palette of color.
+* ``ncol``: If choices is not a list but a vector, go to line after n elements.
+* ``circle``: Logical, use a circle or a square button
+* ``size ``:  Size of the button : default, lg, sm, xs.
+up Logical. Display the dropdown menu above.
+width Width of the dropdown menu content.
+
+
+#### Examples
+<pre><code>
+
+if (interactive()) {
+# Full example
+colorSelectorExample()
+# Simple example
+ui <- fluidPage(
+colorSelectorInput(
+inputId = "mycolor1", label = "Pick a color :",
+choices = c("steelblue", "cornflowerblue",
+"firebrick", "palegoldenrod",
+"forestgreen")
+),
+verbatimTextOutput("result1")
+)
+server <- function(input, output, session) {
+output$result1 <- renderPrint({
+input$mycolor1
+})
+}
+shinyApp(ui = ui, server = server)
+}
+
+</code></pre>
+#### Value
+
+a colorSelectorInput control
+Functions
+• colorSelectorExample: 
+#### Examples
+<pre><code>
+ of use for colorSelectorInput
+• colorSelectorDrop: Display a colorSelector in a dropdown button22
+confirmSweetAlert

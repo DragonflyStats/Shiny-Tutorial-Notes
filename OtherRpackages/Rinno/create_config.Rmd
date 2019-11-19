@@ -1,0 +1,40 @@
+create_config
+Creates an app config file, "utils/config.cfg"
+
+#### Description
+
+Creates an app config file, "utils/config.cfg"
+
+#### Usage
+<pre><code>
+
+create_config(app_name, app_dir = getwd(), pkgs = c("jsonlite",
+"remotes", "magrittr"), pkgs_path = "library", remotes = "none",
+repo = "https://cran.rstudio.com", error_log = "error.log",
+app_repo_url = "none", auth_user = "none", auth_pw = "none",
+auth_token = "none", user_browser = "electron")
+
+</code></pre>
+#### Arguments
+
+* ``app_name``: The name of the app. It will be displayed throughout the installer’s window titles, wizard pages, and dialog boxes. See [Setup]:AppName for details. For continuous installations, app_name is used to check for an R package of the same name, and update it. The Continuous Installation vignette has more details.
+* ``app_dir``: Development app’s directory, defaults to getwd().
+* ``pkgs``: Character vector of package dependencies. Remote development versions are supported via remotes. pkgs are downloaded into file.path(app_dir, pkgs_path) as Windows binary packages (.zip). If you build binary packages and store them there before calling create_app, they will be included as well.
+* ``pkgs_path``: Default location inside the app working directory to install package dependencies This defaults to pkgs_path = "bin"
+* ``remotes``: Character vector of GitHub repository addresses in the format username/repo[/subdir][\@ref|#pull] for GitHub package dependencies.
+* repo Default repository to install CRAN package dependencies. Defaults to repo = "https://cran.rstudio.
+* ``error_log``: Name of error logging file. Contains start up errors from run.R.
+* app_repo_url Repository address for continuous installations in the format "https://bitbucket.org/username/repo(repo = app_name). Only Bitbucket and GitHub repositories are supported.
+* auth_user Bitbucket username. It is recommended to create a read-only account for each app. Support for OAuth 2 and tokens is in the works.
+* ``auth_pw``: Bitbucket password matching the above username.
+* auth_token To install from a private Github repo, generate a personal access token (PAT) in https://github.com/settings/tokens and supply to this argument. This is safer than using a password because you can easily delete a PAT without
+affecting any others.
+* ``user_browser``: Character for the default browser. Options include "chrome", "firefox", and "ie."
+
+#### Value
+A json file, config.cfg, in app_dir/utils.
+Author(s)
+Jonathan M. Hill
+See Also
+create_app.
+

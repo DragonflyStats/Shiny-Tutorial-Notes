@@ -1,0 +1,33 @@
+---
+title: "``argonDash::argonDropNav``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(argonDash)
+```
+
+
+Create a Boostrap 4 dashboard dropdown menu
+
+#### Description
+
+Build an argon dashboard dropdown menu
+
+#### Usage
+<pre><code>
+
+argonDropNav(..., title = NULL, src = NULL, orientation = "right")
+
+</code></pre>
+
+#### Arguments
+
+* ... slot for argonDropNavItem, argonDropNavTitle or argonDropNavDivider.
+* ``title``: Menu title.
+* src Menu image, if any.
+* orientation Dropdown orientation: "left" or "right".
+
+#### Author(s)
+David Granjon, <dgranjon@ymail.com>

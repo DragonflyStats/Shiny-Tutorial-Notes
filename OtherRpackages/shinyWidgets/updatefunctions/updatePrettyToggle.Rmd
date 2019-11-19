@@ -1,0 +1,62 @@
+---
+title: "``shinyWidgets::updatePrettyToggle``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## ``updatePrettyToggle``
+Change the value of a pretty toggle on the client
+
+#### Description
+
+Change the value of a pretty toggle on the client
+
+#### Usage
+<pre><code>
+
+updatePrettyToggle(session, inputId, label = NULL, value = NULL)
+
+</code></pre>
+#### Arguments
+
+* ``session``:  The session object passed to function given to shinyServer.
+* ``inputId``:   The id of the input object.
+* ``label``: The label to set for the input object.
+* ``value``: The value to set for the input object.
+
+#### Examples
+<pre><code>
+
+## Not run:
+if (interactive()) {
+library(shiny)
+library(shinyWidgets)
+ui <- fluidPage(
+tags$h1("Pretty toggle update value"),
+br(),
+prettyToggle(inputId = "toggle1",
+label_on = "Checked!",
+label_off = "Unchecked..."),
+verbatimTextOutput(outputId = "res1"),
+radioButtons(
+inputId = "update", label = "Value to set:",
+choices = c("FALSE", "TRUE")
+)
+)
+server <- function(input, output, session) {
+output$res1 <- renderPrint(input$toggle1)114
+updateRadioGroupButtons
+observeEvent(input$update, {
+updatePrettyToggle(session = session,
+inputId = "toggle1",
+value = as.logical(input$update))
+})
+}
+shinyApp(ui, server)
+}
+## End(Not run)
+</code></pre>

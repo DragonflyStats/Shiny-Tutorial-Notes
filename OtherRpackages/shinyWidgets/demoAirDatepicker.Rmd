@@ -1,0 +1,33 @@
+---
+title: "``shinyWidgets::demoAirDatepicker``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Some examples on how to use airDatepickerInput
+
+#### Description
+
+Some examples on how to use airDatepickerInput
+
+#### Usage
+<pre><code>
+
+demoAirDatepicker(example = "datepicker")
+
+</code></pre>
+
+#### Arguments
+
+* ``example``: Name of the example : "datepicker", "timepicker", "months", "years", "update".
+
+#### Examples
+<pre><code>
+
+demoAirDatepicker("datepicker")
+
+</code></pre>

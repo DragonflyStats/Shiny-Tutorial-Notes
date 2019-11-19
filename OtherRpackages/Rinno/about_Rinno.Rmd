@@ -1,0 +1,74 @@
+Package ‘RInno’
+September 21, 2018
+Type Package
+OS_type windows
+Title An Installation Framework for Shiny Apps
+Version 1.0.1
+Maintainer Jon Hill <jon.mark.hill@gmail.com>
+URL www.ficonsulting.com
+BugReports https://github.com/ficonsulting/RInno/issues
+
+#### Description
+
+Installs shiny apps packaged as stand-alone Electron apps using Inno Setup, an open source soft-
+ware that builds installers for Windows programs <http://www.jrsoftware.org/ishelp/>.
+License GPL-3 | file LICENSE
+Encoding UTF-8
+LazyData true
+Depends R (>= 3.3.0)
+Imports curl, glue (>= 1.2.0), httr, installr, jsonlite, magrittr,
+methods, pkgbuild, remotes, rmarkdown, shiny, stringr , utils
+Suggests knitr, stringi, covr, testthat
+VignetteBuilder knitr
+RoxygenNote 6.1.0
+NeedsCompilation no
+Author Jon Hill [aut, cre, cph],
+W. Lee Pang [aut, cph] (DesktopDeployR project at
+https://github.com/wleepang/DesktopDeployR),
+Hanjo Odendaal [ctb],
+William Bradley [ctb],
+Brent (Tom) Bailey [ctb],
+Mikolaj Rybinski [ctb],
+Chase Clark [ctb],
+Damien Soukhavong [ctb],
+Jonathan Godfrey [ctb] (https://github.com/ajrgodfrey),
+12
+code_section
+Gábor Csárdi [aut],
+Hadley Wickham [aut],
+Winston Chang [aut],
+Jim Hester [aut],
+RStudio [cph],
+Martin Morgan [aut],
+Dan Tenenbaum [aut],
+Mango Solutions [cph]
+Repository CRAN
+Date/Publication 2018-09-21 16:00:12 UTC
+R topics documented:
+code_section . . .
+compile_iss . . . .
+copy_installation .
+create_app . . . . .
+create_bat . . . . .
+create_config . . .
+directives_section .
+download_packages
+example_app . . .
+files_section . . . .
+get_Chrome . . . .
+get_Pandoc . . . .
+get_R . . . . . . .
+get_Rtools . . . . .
+icons_section . . .
+install_inno . . . .
+install_nodejs . . .
+languages_section .
+nativefy_app . . . .
+run_section . . . .
+setup_section . . .
+start_iss . . . . . .
+tasks_section . . .
+%>% . . . . . . 
+
+
+

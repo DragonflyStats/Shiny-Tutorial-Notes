@@ -1,0 +1,32 @@
+## ``argonDashHeader``
+Create a Boostrap 4 dashboard header
+#### Description
+Build an argon dashboard header
+
+#### Usage
+<pre><code>
+
+argonDashHeader(..., gradient = TRUE, color = NULL,
+separator = FALSE, separator_color = "secondary",
+bottom_padding = 4, top_padding = 6, background_img = NULL,
+mask = FALSE, opacity = 8, height = 600)4
+argonDashNavbar
+
+</code></pre>
+#### Arguments
+
+* ... Any element
+* gradient Whether to apply a gradient effect. TRUE by default.
+* color Header color. See https://demos.creative-tim.com/argon-design-system/ docs/foundation/colors.html.
+* separator Header bottom separator. FALSE by default.
+* separator_color Separator color. "secondary" by default. 
+See https://demos.creative-tim.com/argon-design-system/docs/foundation/colors.html.
+* bottom_padding Bottom padding. 4 by default.
+* top_padding Bottom padding. 6 by default.
+* background_img Background image url or path.
+* mask Whether to add an opacity mask on the header. FALSE by default
+* opacity Mask opacity. Between 0 and 8. Only if mask is TRUE.
+* height Header height. 600px by default. Only if background image.
+
+#### Author(s)
+David Granjon, <dgranjon@ymail.com>

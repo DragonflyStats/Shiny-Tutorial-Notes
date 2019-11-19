@@ -1,0 +1,31 @@
+get_Rtools
+Downloads Rtools
+
+#### Description
+
+Downloads Rtools in app_dir. If it has already been downloaded, get_Rtools will use that file. If
+the download fails it will stop.
+
+#### Usage
+<pre><code>
+
+get_Rtools(app_dir, Rtools_version, R_version)
+
+</code></pre>
+#### Arguments
+
+app_dir
+Development app’s directory, defaults to getwd().
+Rtools_version Rtools version to include. For more information, see Building R for Windows.
+R_version
+R version to use. Supports inequalities. Defaults to: paste0(">=", R.version$major, '.', R.version
+Details
+If create_app(include_Rtools = TRUE), then get_Rtools.
+Value
+sprintf('Rtools%s.exe', gsub("\.", "", Rtools_version)) in app_dir.
+Author(s)
+Jonathan M. Hill
+See Also
+get_R, copy_installation, create_config, create_bat, directives_section, setup_section,
+languages_section, tasks_section, files_section, icons_section, run_section, and code_section.
+

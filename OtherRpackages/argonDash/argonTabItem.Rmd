@@ -1,0 +1,32 @@
+
+argonTabItem
+One tab to put inside a tab items container
+
+#### Description
+One tab to put inside a tab items container
+
+#### Usage
+<pre><code>
+
+argonTabItem(tabName = NULL, ...)
+
+</code></pre>
+#### Arguments
+
+tabName The name of a tab. This must correspond to the tabName of a argonSidebarItem.
+... Contents of the tab.
+A container for tab items
+argonTabItems
+#### Description
+A container for tab items
+
+#### Usage
+<pre><code>
+
+argonTabItems(...)
+
+</code></pre>
+#### Arguments
+
+...
+Items to put in the container. Each item should be a argonTabItem.

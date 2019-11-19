@@ -1,0 +1,19 @@
+
+magrittr Pipes
+
+#### Description
+
+magrittr Pipes
+
+#### Usage
+<pre><code>
+
+lhs %>% rhs
+
+</code></pre>
+#### Arguments
+
+lhs A value or the magrittr placeholder.
+rhs A function call using the magrittr semantics.
+See Also
+magrittr

@@ -1,0 +1,12 @@
+ArgonDropNavDivider
+Create a Boostrap 4 dashboard dropdown menu divider
+#### Description
+Build an argon dashboard dropdown menu divider
+
+#### Usage
+<pre><code>
+
+argonDropNavDivider()
+Author(s)
+David Granjon, <dgranjon@ymail.com>
+

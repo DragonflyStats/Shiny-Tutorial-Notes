@@ -1,0 +1,43 @@
+run_section
+Filename of icon in app_dir, used for desktop and program menu shortcuts.
+Run Section of ISS
+
+#### Description
+
+Specifies any number of programs to execute after the program has been successfully installed, but
+before the installer displays the final dialog. See [Run] for details.
+
+#### Usage
+<pre><code>
+
+run_section(iss, R_flags = "/SILENT")
+
+</code></pre>
+#### Arguments
+
+iss Character vector which cumulatively becomes an Inno Setup Script (ISS).
+R_flags String of flags to customize R’s installation. Defaults to "/SILENT". For other
+options, visit Section 2.4 of the R FAQ. If using the ’/DIR=""C:\myapp""’ flag,
+use double backslashes and double quotes. For more information on valid Inno
+Setup constants, see the Constants section.setup_section
+21
+Value
+Chainable character vector, which can be used as the text argument of writeLines to generate an
+ISS.
+Author(s)
+Jonathan M. Hill
+See Also
+get_R, copy_installation, create_config, create_bat, directives_section, setup_section,
+languages_section, tasks_section, files_section, icons_section, run_section, and code_section.
+
+#### Examples
+<pre><code>
+
+## Not run:
+# You can combine custom R installation flags with Inno Setup constants
+create_app("myapp", "app", R_flags = '/SILENT /DIR=""{userdocs}""')
+# Or directly
+run_section(iss, R_flags = '/SILENT /DIR=""{userdocs}""')
+## End(Not run)
+</code></pre>
+

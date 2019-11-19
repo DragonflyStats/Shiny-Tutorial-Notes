@@ -1,0 +1,47 @@
+---
+title: "``shinyWidgets::setBackgroundImage``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Custom background image for your shinyapp
+
+#### Description
+
+Allow to change the background image of your shinyapp.
+
+#### Usage
+<pre><code>
+
+setBackgroundImage(src = NULL)
+
+</code></pre>
+
+#### Arguments
+
+* src Background url or path.
+
+Note
+Use with moderation. The image while cover the entire screen (no repeat, cover).
+
+#### Examples
+<pre><code>
+
+## Not run:
+if (interactive()) {
+library(shiny)
+library(shinyWidgets)
+ui <- fluidPage(
+tags$h2("Add a shiny app background image"),
+setBackgroundImage(src = "http://wallpics4k.com/wp-content/uploads/2014/07/470318.jpg")
+)
+server <- function(input, output, session) {
+}
+shinyApp(ui, server)
+}
+## End(Not run)
+</code></pre>

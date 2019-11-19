@@ -1,0 +1,20 @@
+## argonDashNavbar
+
+Create a Boostrap 4 dashboard navbar
+
+#### Description
+Build an argon dashboard navbar
+
+#### Usage
+<pre><code>
+
+argonDashNavbar(...)
+
+</code></pre>
+
+#### Arguments
+
+* ... Any element such as argonDropNav.
+
+#### Author(s)
+David Granjon, <dgranjon@ymail.com>

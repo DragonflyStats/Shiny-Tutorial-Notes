@@ -1,0 +1,37 @@
+start_iss
+Start ISS
+
+#### Description
+
+Chain directives_section against this function to start building custom installers.
+
+#### Usage
+<pre><code>
+
+start_iss(app_name)
+
+</code></pre>
+#### Arguments
+
+app_name
+The name of the app. It will be displayed throughout the installer’s window
+titles, wizard pages, and dialog boxes. See [Setup]:AppName for details. For
+continuous installations, app_name is used to check for an R package of the same
+name, and update it. The Continuous Installation vignette has more details.
+Value
+app_name and set options('RInno.app_name' = app_name)24
+tasks_section
+Author(s)
+Jonathan M. Hill
+See Also
+directives_section.
+
+#### Examples
+<pre><code>
+
+## Not run:
+start_iss('myapp') %>%
+directives_section(
+include_R = FALSE, R_version = '3.3.2')
+## End(Not run)
+<code></pre>

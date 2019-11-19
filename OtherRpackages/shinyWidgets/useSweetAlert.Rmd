@@ -1,0 +1,29 @@
+---
+title: "``shinyWidgets::useSweetAlert``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## ``useSweetAlert``
+Load Sweet Alert dependencies
+
+#### Description
+
+This function is useless for sendSweetAlert, confirmSweetAlert, inputSweetAlert, but is still
+needed for progressSweetAlert.
+
+#### Usage
+<pre><code>
+
+useSweetAlert()
+</code></pre>
+
+#### Note
+Use ``receiveSweetAlert()`` in the UI and ``sendSweetAlert()`` in the server.
+
+#### See Also
+sendSweetAlert, confirmSweetAlert, inputSweetAlert

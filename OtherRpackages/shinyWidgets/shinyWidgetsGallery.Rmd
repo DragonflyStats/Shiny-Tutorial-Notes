@@ -1,0 +1,22 @@
+## ``shinyWidgetsGallery``
+
+Launch the shinyWidget Gallery
+
+#### Description
+
+A gallery of widgets available in the package.
+
+#### Usage
+<pre><code>
+
+shinyWidgetsGallery()
+
+#### Examples
+
+<pre><code>
+
+if (interactive()) {
+shinyWidgetsGallery()
+}
+
+</code></pre>

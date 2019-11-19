@@ -1,0 +1,43 @@
+## ``install_nodejs``
+
+Downloads and installs nodejs
+
+#### Description
+
+Suports Nodejs’s "current" and "lts" versions - LTS - Current
+
+#### Usage
+<pre><code>
+
+install_nodejs(page_with_download_url = "https://nodejs.org/en/download/",
+version = "LTS", ...)
+
+</code></pre>
+
+#### Arguments
+
+* page_with_download_url nodejs download url.
+* version character. "current" or "lts". Defaults to "lts"
+* ... extra parameters to pass to install.
+
+
+
+#### Examples
+<pre><code>
+
+## Not run:
+install_nodejs()
+install_nodejs(version = "current")
+## End(Not run)
+</code><pre>
+
+##### Details
+As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network
+applications.
+See About for more information.
+
+#### Value
+TRUE/FALSE - was the installation successful or not.
+
+#### Author(s)
+Tal Galili, A. Jonathan R. Godfrey, and Jonathan M. Hill

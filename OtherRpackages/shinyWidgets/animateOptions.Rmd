@@ -1,0 +1,50 @@
+---
+title: "``shinyWidgets::animateOptions``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Animate options
+
+#### Description
+
+Animate options
+
+#### Usage
+<pre><code>
+
+animateOptions(enter = "fadeInDown", exit = "fadeOutUp", duration = 1)
+
+</code></pre>
+
+#### Arguments
+
+* ``enter``: Animation name on appearance
+* ``exit``: Animation name on disappearance
+* ``duration``:ration of the animation
+
+
+#### Examples
+
+<pre><code>
+
+## Only run examples in interactive R sessions
+if (interactive()) {
+  dropdown(
+  "Your contents goes here ! You can pass several elements",
+  circle = TRUE, status = "danger", icon = icon("gear"), width = "300px",
+  animate = animateOptions(enter = "fadeInDown", exit = "fadeOutUp", duration = 3)
+  )
+  }
+
+</code></pre>
+
+#### Value
+
+a list
+See Also
+animations

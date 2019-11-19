@@ -1,0 +1,17 @@
+## ``Compile ISS``
+
+#### Description
+
+After running create_app and editing the content of the installer and app, call ``compile_iss``.
+
+#### Usage
+<pre><code>
+
+compile_iss()
+</code></pre>
+
+#### Value
+Installer in dir_out.
+
+#### Author(s)
+Jonathan M. Hill

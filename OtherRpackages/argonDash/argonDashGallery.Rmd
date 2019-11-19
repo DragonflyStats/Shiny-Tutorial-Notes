@@ -1,0 +1,18 @@
+##``argonDashGallery``
+
+Launch the argonDash Gallery
+#### Description
+A gallery of all components available in argonDash.
+
+#### Usage
+<pre><code>
+
+argonDashGallery()
+
+#### Examples
+<pre><code>
+
+if (interactive()) {
+argonDashGallery()
+}
+</code></pre>

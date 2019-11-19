@@ -1,0 +1,60 @@
+
+## ``checkboxGroupButtons``
+Buttons Group checkbox Input Control
+
+#### Description
+
+Create buttons grouped that act like checkboxes.
+
+#### Usage
+<pre><code>
+
+checkboxGroupButtons(inputId, label = NULL, choices = NULL,
+selected = NULL, status = "default", size = "normal",
+direction = "horizontal", justified = FALSE, individual = FALSE,
+checkIcon = list(), width = NULL, choiceNames = NULL,
+choiceValues = NULL)
+
+</code></pre>
+#### Arguments
+
+* ``inputId``:   The input slot that will be used to access the value.
+* ``label  ``: Input label.
+* ``choices``:  List of values to select from (if elements of the list are named then that name rather than the value is displayed to the user)
+* ``selected``:  The initially selected value.
+* ``status``:  Add a class to the buttons, you can use Bootstrap status like ’info’, ’primary’, ’danger’, ’warning’ or ’success’. Or use an arbitrary strings to add a custom class, e.g. : with status = 'myClass', buttons will have class btn-myClass.
+* ``size ``:  Size of the buttons (’xs’, ’sm’, ’normal’, ’lg’)
+* ``direction ``:  Horizontal or vertical.
+* ``justified ``:   If TRUE, fill the width of the parent div.
+* ``indvidual``:   If TRUE, buttons are separated.
+* ``checkIcon``:  A list, if no empty must contain at least one element named ’yes’ corresponding to an icon to display if the button is checked.
+* ``width``: The width of the input, e.g. ’400px’, or ’100%’.
+* ``choiceNames``:  choice Values
+Same as in checkboxGroupInput. List of names and values, respectively, that are displayed to the user in the app and correspond to the each choice (for this reason, choiceNames and choiceValues s must have the same length).
+
+
+#### Examples
+<pre><code>
+
+## Only run examples in interactive R sessions
+if (interactive()) {
+ui <- fluidPage(
+checkboxGroupButtons(inputId = "somevalue",
+label = "Make a choice: ",
+choices = c("A", "B", "C")),
+verbatimTextOutput("value")
+)
+server <- function(input, output) {
+output$value <- renderText({ input$somevalue })
+}
+shinyApp(ui, server)
+}
+
+</code></pre>
+
+#### Value
+
+A buttons group control that can be added to a UI definition.18
+chooseSliderSkin
+See Also
+updateCheckboxGroupButtons

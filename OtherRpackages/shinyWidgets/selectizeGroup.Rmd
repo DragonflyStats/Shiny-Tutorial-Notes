@@ -1,0 +1,78 @@
+---
+title: "``shinyWidgets::selectizeGroup``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+selectizeGroup-module Selectize Group
+
+#### Description
+
+Group of mutually dependent ‘selectizeInput‘ for filtering data.frame’s columns (like in Excel).72
+selectizeGroup-module
+
+#### Usage
+<pre><code>
+
+selectizeGroupUI(id, params, label = NULL, btn_label = "Reset filters",
+inline = TRUE)
+selectizeGroupServer(input, output, session, data, vars)
+
+</code></pre>
+#### Arguments
+
+* id Module’s id.
+params A named list of parameters passed to each ‘selectizeInput‘, you can use : ‘inputId‘ (obligatory, must be variable name), ‘label‘, ‘placeholder‘.
+label Character, global label on top of all labels.
+btn_label Character, reset button label.
+* ``inline``:  If TRUE (the default), ‘selectizeInput‘s are horizontally positioned, otherwise vertically.
+input standard shiny input.
+output standard shiny output.
+* ``session``:   standard shiny session.
+data a data.frame, or an object that can be coerced to data.frame.
+vars character, columns to use to create filters, must correspond to variables listed in params.
+
+#### Value
+
+a reactive function containing data filtered.
+
+#### Examples
+<pre><code>
+
+library(shiny)
+library(shinyWidgets)
+data("mpg", package = "ggplot2")
+ui <- fluidPage(
+  fluidRow(
+    column(
+      width = 10, offset = 1,
+      tags$h3("Filter data with selectize group"),
+      panel(
+        selectizeGroupUI(
+          id = "my-filters",
+          params = list(
+            manufacturer = list(inputId = "manufacturer", title = "Manufacturer:"),
+            model = list(inputId = "model", title = "Model:"),
+            trans = list(inputId = "trans", title = "Trans:"),
+            class = list(inputId = "class", title = "Class:")
+          )
+        )
+      )
+    )
+  ), status = "primary"
+),
+dataTableOutput(outputId = "table")
+server <- function(input, output, session) {
+  res_mod <- callModule(
+    module = selectizeGroupServer,
+    id = "my-filters",
+    data = mpg,
+    vars = c("manufacturer", "model", "trans", "class")
+  )
+  output$table <- renderDataTable(res_mod())
+}
+shinyApp(ui, server)
+
+</code></pre>

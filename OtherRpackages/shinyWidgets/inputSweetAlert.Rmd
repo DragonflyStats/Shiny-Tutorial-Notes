@@ -1,0 +1,61 @@
+---
+title: "``shinyWidgets::inputSweetAlert``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Launch an input text dialog
+
+#### Description
+
+Launch a popup with a text input
+
+#### Usage
+<pre><code>
+
+inputSweetAlert(session, inputId, title = NULL, text = NULL,
+type = NULL, btn_labels = "Ok", placeholder = NULL)
+
+</code></pre>
+#### Arguments
+
+* ``session``:  The session object passed to function given to shinyServer.
+* ``inputId``:   The input slot that will be used to access the value.
+title Title of the alert.
+text Text of the alert.
+type Type of the alert : info, success, warning or error.
+btn_labels Labels for button(s).
+* ``placeholder``:  A character string giving the user a hint as to what can be entered into the con-
+trol.
+
+See Also
+sendSweetAlert, confirmSweetAlert
+
+#### Examples
+<pre><code>
+
+
+library("shiny")
+library("shinyWidgets")
+ui <- fluidPage(
+tags$h1("Confirm sweet alert"),
+actionButton(inputId = "go", label = "Launch input text dialog"),
+verbatimTextOutput(outputId = "res")
+)
+server <- function(input, output, session) {
+observeEvent(input$go, {
+inputSweetAlert(
+session = session, inputId = "mytext",
+title = "What's your name ?"
+)
+})
+output$res <- renderPrint(input$mytext)
+}
+shinyApp(ui = ui, server = server)
+
+
+</code></pre>

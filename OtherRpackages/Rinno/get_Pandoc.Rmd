@@ -1,0 +1,31 @@
+## ``get_Pandoc``
+
+Downloads Pandoc
+
+#### Description
+
+Downloads Pandoc in ``app_dir``. If Pandoc has already been downloaded, ``get_Pandoc`` will use that file. If the download fails it will stop.
+
+#### Usage
+<pre><code>
+
+get_Pandoc(app_dir, Pandoc_version = rmarkdown::pandoc_version())
+
+</code></pre>
+#### Arguments
+
+* ``app_dir``: Development app’s directory, defaults to getwd().
+* ``Pandoc_version``: Pandoc version to use, defaults to: pandoc_available. This ensures that the same version of Pandoc used during development is installed on users’ computers.
+
+#### Details
+If create_app(include_Pandoc = TRUE), then get_Pandoc.
+
+#### Value
+sprintf("pandoc-%s-windows.msi", Pandoc_version) in app_dir.
+
+#### Author(s)
+Jonathan M. Hill and Hanjo Odendaal
+
+#### See Also
+get_R, copy_installation, create_config, create_bat, directives_section, setup_section,
+languages_section, tasks_section, files_section, icons_section, run_section, and code_section.

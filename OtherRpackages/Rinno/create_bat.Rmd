@@ -1,0 +1,27 @@
+## ``create_bat``
+
+Creates app’s batch file, "app_name.bat"
+
+#### Description
+
+This procedure creates a batch file that starts a shiny app using wsf/run.wsf.
+
+#### Usage
+<pre><code>
+
+create_bat(app_name, app_dir)
+
+</code></pre>
+#### Arguments
+
+* ``app_name``: The name of the app. It will be displayed throughout the installer’s window titles, wizard pages, and dialog boxes. See [Setup]:AppName for details. For continuous installations, app_name is used to check for an R package of the same name, and update it. The Continuous Installation vignette has more details.
+* ``app_dir``: Development app’s directory, defaults to ``getwd()``.
+
+#### Value
+BATCH file in app_dir
+
+#### Author(s)
+Jonathan M. Hill
+
+#### See Also
+create_app

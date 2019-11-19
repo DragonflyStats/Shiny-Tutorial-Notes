@@ -1,0 +1,100 @@
+---
+title: "``shinyWidgets::multiInput``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Create a multiselect input control
+
+#### Description
+
+A user-friendly replacement for select boxes with the multiple attribute
+
+#### Usage
+<pre><code>
+
+multiInput(inputId, label, choices = NULL, selected = NULL,
+options = NULL, width = NULL, choiceNames = NULL,
+choiceValues = NULL)
+
+</code></pre>
+#### Arguments
+
+* ``inputId``:   The input slot that will be used to access the value.
+* ``label``:  Display label for the control, or NULL for no label.
+* ``choices``:  List of values to select from.
+* ``selected``:  The initially selected value.
+* ``options``: List of options passed to multi (``enable_search = FALSE`` for disabling the search bar for example).
+* `` width ``: The width of the input, e.g. 400px, or 100%.
+* ``choiceNames``: List of names to display to the user.
+* ``choiceValues``: s List of values corresponding to choiceNames.
+
+
+#### Examples
+<pre><code>
+
+library("shiny")
+library("shinyWidgets")
+# simple use
+  ui <- fluidPage(
+    multiInput(
+      inputId = "id", label = "Fruits :",
+      choices = c("Banana", "Blueberry", "Cherry",
+                  "Coconut", "Grapefruit", "Kiwi",
+                  "Lemon", "Lime", "Mango", "Orange",
+                  "Papaya"),
+      selected = "Banana", width = "350px"
+    ),
+    verbatimTextOutput(outputId = "res")
+  )
+  server <- function(input, output, session) {
+    output$res <- renderPrint({
+      input$id
+    })
+  }
+  shinyApp(ui = ui, server = server)
+  
+</code></pre>
+
+<pre><code>
+
+###############
+# with options
+ui <- fluidPage(
+   multiInput(
+     inputId = "id", label = "Fruits :",
+     choices = c("Banana", "Blueberry", "Cherry",
+                  "Coconut", "Grapefruit", "Kiwi",
+                  "Lemon", "Lime", "Mango", "Orange",
+                  "Papaya"),
+      selected = "Banana", width = "400px",
+      options = list(
+        enable_search = FALSE,
+        non_selected_header = "Choose between:",
+        selected_header = "You have selected:"
+      )
+    ),
+    verbatimTextOutput(outputId = "res")
+  )
+###############
+server <- function(input, output, session) {
+    output$res <- renderPrint({
+      input$id
+    })
+  }
+
+###############
+shinyApp(ui = ui, server = server)
+
+
+
+</code></pre>
+
+#### Value
+
+A multiselect control
+See Also
+updateMultiInput to update value server-side.

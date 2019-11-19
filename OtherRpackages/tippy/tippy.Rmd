@@ -1,0 +1,57 @@
+## ``tippy``: Create a tooltip
+
+#### Description
+
+Add tooltips to your document.
+
+#### Usage
+<pre><code>
+
+tippy(text, tooltip, ..., width = NULL, height = NULL, elementId = NULL)
+tippy_this(elementId, tooltip, ...)
+
+</code></pre>
+#### Arguments
+
+text
+tooltip
+...
+height, width
+elementId
+Element text.
+Element tooltip.
+
+Any other options from the official documentation.
+height and width of sparkline htmlwidget specified in any valid CSS size unit.
+string id as a valid CSS element id.
+
+See Also
+official documentation
+
+#### Examples
+```
+tippy("Hover me!",
+tippy("Hover me!",
+theme = "light")
+tippy("Hover me!",
+duration = 1000,
+tippy("Click me!",
+theme = "light")
+tooltip = "Hi, I'm the tooltip!")
+tooltip = "Hi, I'm the tooltip!", placement = "right",
+tooltip = "Hi, I'm the tooltip!", animation = "scale",
+placement = "bottom")
+tooltip = "Hi, I'm the tooltip!", trigger = "click",
+# use tooltip on other elements.
+if(interactive()){
+library(shiny)
+shinyApp(
+ui = fluidPage(
+textInput("input", "input with tooltip"),
+tippy("Some text", tooltip = "Tiiiip"),
+tippy_this("input", "Tooltip", placement = "right")
+),
+server = function(input, output) {}
+)
+}
+```

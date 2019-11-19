@@ -1,0 +1,23 @@
+## ``argonDropNavItem``
+
+Create a Boostrap 4 dashboard dropdown menu item
+
+#### Description
+
+Build an argon dashboard dropdown menu item
+
+#### Usage
+<pre><code>
+
+argonDropNavItem(title = NULL, src = NULL, icon = NULL)
+
+</code></pre>
+
+#### Arguments
+
+* ``title``: Item title.
+* ``src``: External link.
+* ``icon``: Icon name, if any.
+
+#### Author(s)
+David Granjon, <dgranjon@ymail.com>8

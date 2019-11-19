@@ -1,0 +1,25 @@
+## ``download_packages``
+
+Download packages
+
+#### Description
+
+Places package dependencies in ``pkgs_path``.
+
+#### Usage
+<pre><code>
+
+download_packages(app_dir, pkgs_path, pkgs, repo, remotes, auth_user,
+auth_token)
+
+</code></pre>
+#### Arguments
+
+* ``app_dir``: Development app’s directory, defaults to getwd().
+* ``pkgs_path``: Default location inside the app working directory to install package dependencies This defaults to pkgs_path = "bin"
+* ``pkgs``: Character vector of package dependencies. Remote development versions are supported via remotes. pkgs are downloaded into file.path(app_dir, pkgs_path) as Windows binary packages (.zip). If you build binary packages and store them there before calling create_app, they will be included as well.
+* ``repo``: Default repository to install CRAN package dependencies. Defaults to repo = "https://cran.rstudio.
+* ``remotes``: Character vector of GitHub repository addresses in the format username/repo[/subdir][\@ref|#pull] for GitHub package dependencies.
+* ``auth_user``: Bitbucket username. It is recommended to create a read-only account for each app. Support for OAuth 2 and tokens is in the works.
+* ``auth_token``: To install from a private Github repo, generate a personal access token (PAT) in https://github.com/settings/tokens and supply to this argument. This is safer than using a password because you can easily delete a PAT without
+affecting any others.

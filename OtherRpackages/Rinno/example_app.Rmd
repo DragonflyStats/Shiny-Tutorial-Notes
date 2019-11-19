@@ -1,0 +1,37 @@
+Example app
+
+#### Description
+
+Creates a basic app to test in ``wd/app_dir``.
+
+#### Usage
+<pre><code>
+
+example_app(app_dir = "app", wd = getwd(), type = "Shiny")
+
+</code></pre>
+
+#### Arguments
+
+* ``app_dir``: Shiny app’s directory. Defaults to "app".
+* ``wd``: Path to working directory. Defaults to ``getwd()``.
+* ``type``: "Shiny" or "flexdashboard". Defaults to "Shiny".
+
+#### Examples
+<pre><code>
+
+
+# Shiny example
+example_app()
+create_app("myapp", "app")
+# Flexdashboard example
+example_app(type = "flexdashboard")
+create_app("myapp", "app")
+
+</code></pre>
+
+#### Value
+Shiny app example.
+
+#### Author(s)
+Jonathan M. Hill

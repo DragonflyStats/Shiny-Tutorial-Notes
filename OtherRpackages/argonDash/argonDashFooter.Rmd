@@ -1,0 +1,24 @@
+## ``argonDashFooter``
+
+Create a Boostrap 4 dashboard footer
+
+#### Description
+
+Build an argon dashboard footer
+
+#### Usage
+
+<pre><code>
+
+argonDashFooter(..., copyrights = NULL, src = NULL)
+
+</code></pre>
+
+#### Arguments
+
+* ``...``: Slot for argonFooterMenu.
+* ``copyrights``: Left text, if any.
+* ``src``: Left text src, if any.
+
+#### Author(s)
+David Granjon, <dgranjon@ymail.com>

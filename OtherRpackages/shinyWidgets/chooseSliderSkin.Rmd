@@ -1,0 +1,92 @@
+
+---
+title: "``shinyWidgets::chooseSliderSkin``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Theme selector for sliderInput
+
+#### Description
+
+Customize the appearance of the original shiny’s sliderInputs
+
+#### Usage
+
+<pre><code>
+
+chooseSliderSkin(skin = c("Shiny", "Flat", "Modern", "Nice", "Simple", "HTML5", "Round", "Square"), color = NULL)
+
+</code></pre>
+
+#### Arguments
+
+* ``skin``: The skin to apply. Choose among 5 different flavors, namely ’Shiny’, ’Flat’, ’Modern’, ’Nice’, ’Simple’, ’HTML5’, ’Round’ and ’Square’.
+* ``color``: A color to apply to all sliders. Works with following skins: ’Shiny’, ’Flat’, ’Modern’, ’HTML5’. For ’Flat’ a CSS filter is applied, desired color maybe a little offset.
+
+
+
+#### Examples
+<pre><code>
+
+
+library(shiny)
+library(shinyWidgets)
+# With Modern design
+ui <- fluidPage(
+  chooseSliderSkin("Modern"),
+  sliderInput("obs", "Customized single
+min = 0, max = 100, value
+),
+sliderInput("obs2", "Customized range
+              min = 0, max = 100, value
+  ),
+  plotOutput("distPlot")
+)
+slider:",
+= 50
+slider:",
+= c(40, 80)
+server <- function(input, output) {
+  output$distPlot <- renderPlot({
+    hist(rnorm(input$obs))
+  })
+}
+shinyApp(ui, server)
+</code></pre>
+
+<pre><code>
+
+# Use Flat design & a custom color
+ui <- fluidPage(
+  chooseSliderSkin("Flat", color = "#112446"),
+  sliderInput("obs", "Customized single slider:",
+              min = 0, max = 100, value = 50
+  ),
+  sliderInput("obs2", "Customized range slider:",
+              min = 0, max = 100, value = c(40, 80)
+  ),
+  sliderInput("obs3", "An other slider:",
+              min = 0, max = 100, value = 50
+  ),
+  plotOutput("distPlot")
+)
+server <- function(input, output) {
+}
+output$distPlot <- renderPlot({
+  hist(rnorm(input$obs))
+})
+shinyApp(ui, server)
+
+
+</code></pre>
+
+#### Note
+It is not currently possible to apply multiple themes at the same time.
+
+#### See Also
+See setSliderColor to update the color of your sliderInput.

@@ -1,0 +1,122 @@
+---
+title: "``shinyWidgets::updateCheckboxGroupButtons``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+updateCheckboxGroupButtons
+Change the value of a checkboxes group buttons input on the client
+
+#### Description
+
+Change the value of a radio group buttons input on the client
+
+#### Usage
+<pre><code>
+
+updateCheckboxGroupButtons(session, inputId, label = NULL,
+choices = NULL, selected = NULL, status = "default",
+size = "normal", checkIcon = list(), choiceNames = NULL,
+choiceValues = NULL)
+
+</code></pre>
+#### Arguments
+
+* ``session``:  The session object passed to function given to shinyServer.
+* ``inputId``:   The id of the input object.
+* ``label``:  The label to set.
+* ``choices ``:  The new choices for the input.
+* ``selected``:  The values selected.
+* ``status``:   Status, only used if choices is not NULL.
+* ``size``:   Size, only used if choices is not NULL.
+checkIcon
+Icon, only used if choices is not NULL.
+* ``choiceNames``:  , choice Values
+List of names and values, an alternative to choices.
+See Also
+checkboxGroupButtons
+
+#### Examples
+<pre><code>
+
+## Not run:
+if (interactive()) {
+library(shiny)
+library(shinyWidgets)
+# Example 1 ----
+ui <- fluidPage(
+radioButtons(inputId = "up", label = "Update button :", choices = c("All", "None")),98
+updateCheckboxGroupButtons
+checkboxGroupButtons(
+inputId = "btn", label = "Power :",
+choices = c("Nuclear", "Hydro", "Solar", "Wind"),
+selected = "Hydro"
+),
+verbatimTextOutput(outputId = "res")
+)
+server <- function(input,output, session){
+observeEvent(input$up, {
+if (input$up == "All"){
+updateCheckboxGroupButtons(session, "btn", selected = c("Nuclear", "Hydro", "Solar", "Wind"))
+} else {
+updateCheckboxGroupButtons(session, "btn", selected = character(0))
+}
+}, ignoreInit = TRUE)
+}
+output$res <- renderPrint({
+input$btn
+})
+shinyApp(ui = ui, server = server)
+# Example 2 ----
+library("shiny")
+library("shinyWidgets")
+ui <- fluidPage(
+checkboxGroupButtons(
+inputId = "somevalue",
+choices = c("A", "B", "C"),
+label = "My label"
+),
+verbatimTextOutput(outputId = "res"),
+)
+actionButton(inputId = "updatechoices", label = "Random choices"),
+pickerInput(
+inputId = "updateselected", label = "Update selected:",
+choices = c("A", "B", "C"), multiple = TRUE
+),
+textInput(inputId = "updatelabel", label = "Update label")
+server <- function(input, output, session) {
+output$res <- renderPrint({updateKnobInput
+99
+input$somevalue
+})
+observeEvent(input$updatechoices, {
+newchoices <- sample(letters, sample(2:6))
+updateCheckboxGroupButtons(
+session = session, inputId = "somevalue",
+choices = newchoices
+)
+updatePickerInput(
+session = session, inputId = "updateselected",
+choices = newchoices
+)
+})
+observeEvent(input$updateselected, {
+updateCheckboxGroupButtons(
+session = session, inputId = "somevalue",
+selected = input$updateselected
+)
+}, ignoreNULL = TRUE, ignoreInit = TRUE)
+observeEvent(input$updatelabel, {
+updateCheckboxGroupButtons(
+session = session, inputId = "somevalue",
+label = input$updatelabel
+)
+}, ignoreInit = TRUE)
+}
+shinyApp(ui = ui, server = server)
+}
+## End(Not run)
+</code></pre>

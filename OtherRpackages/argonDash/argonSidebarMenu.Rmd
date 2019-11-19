@@ -1,0 +1,20 @@
+
+## argonSidebarMenu
+
+Create a Boostrap 4 argon sidebar menu
+
+#### Description
+Build an argon dashboard main sidebar menu
+
+#### Usage
+<pre><code>
+
+argonSidebarMenu(...)
+
+</code></pre>
+#### Arguments
+
+... Slot for argonSidebarItem.
+
+#### Author(s)
+David Granjon, <dgranjon@ymail.com>

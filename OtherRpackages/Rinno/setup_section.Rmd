@@ -1,0 +1,65 @@
+setup_section
+Setup Section of ISS
+
+#### Description
+
+This section contains global settings used by the installer and uninstaller. See [Setup] for details.
+
+#### Usage
+<pre><code>
+
+setup_section(iss, app_dir, dir_out, app_version = "{#MyAppVersion}",
+name = "{#MyAppName}", publisher = "{#MyAppPublisher}",
+default_dir = "userdocs", privilege = "lowest",
+info_before = "infobefore.txt", info_after = "infoafter.txt",
+license_file = "none", setup_icon = "setup.ico", inst_pw = "none",
+pub_url = "{#MyAppURL}", sup_url = "{#MyAppURL}",
+upd_url = "{#MyAppURL}", compression = "lzma2/ultra64")22
+setup_section
+
+</code></pre>
+#### Arguments
+
+* ``iss`` Character vector which cumulatively becomes an Inno Setup Script (ISS).
+* ``app_dir`` Development app’s directory, defaults to getwd().
+* ``dir_out`` Installer’s directory. A sub-directory of app_dir, which will be created if it does not exist. Defaults to ’RInno_installer’.
+* app_version Version number of the app being installed, defaults to '0.0.0'. It is displayed in the Version field of the app’s Add/Remove Programs entry. See [Setup]:AppVersion for details.
+* ``name``: Defaults to ISPP directive, '{#MyAppName}' set by directives(app_name).
+publisher String displayed on the "Support" dialogue of the Add/Remove Programs Control Panel applet, defaults to " ". See [Setup]:AppPublisher for details.
+* default_dir The default directory name used by the Select Destination Page of the installer. See [Setup]:DefaultDirName and Constants for details.
+* ``privilege``: Valid options: 'poweruser', 'admin', 'lowest'. Defaults to 'lowest'. This directive affects whether elevated rights are requested when an installation is started. See [Setup]:PrivilegesRequired for details.
+* info_before File, in .txt or .rtf format, which is displayed on the first page of the installer. It must be located in app_dir. See [Setup]:InfoBeforeFile for details.
+* info_after File, in .txt or .rtf format, which is displayed on the last page of the installer. It must be located in app_dir. See [Setup]:InfoAfterFile for details.
+* ``license_file``: File, in .txt or .rtf format, which is displayed before the Select Destination Page of the wizard. See [Setup]:LicenseFile for details.
+* ``setup_icon`` File name of the icon used for installer/uninstaller. The file must be located in app_dir. See [Setup]:SetupIconFile for details.
+* ``inst_pw`` Installer password, string. Visit the Inno Setup Downloads page and place IS-
+* ``Crypt.dll`` in your Inno Setup directory. Afterwards, if a inst_pw is supplied, then the contents of the installer will be encrypted using a 160-bit key derived from the password string. See [Setup]:Password and [Setup]:Encryption for de-
+tails.
+* ``pub_url`` String. Defaults to '{#MyAppURL}', which is the ISPP directive for main_url. Therefore, main_url will be used, unless otherwise specified. See [Setup]:AppPublisherURL for details.
+* ``sup_url`` String. Defaults to '{#MyAppURL}', which is the ISPP directive for main_url. Therefore, main_url will be used, unless otherwise specified. See [Setup]:AppSupportURL
+for details.
+* ``upd_url`` String. Defaults to '{#MyAppURL}', which is the ISPP directive for main_url. Therefore, main_url will be used, unless otherwise specified. See [Setup]:AppUpdatesURL
+for details.
+* ``compression`` Defaults to 'lzma2/ultra64', which has the best compression ratio available. Other valid options include: 'zip', 'bzip', 'lzma', and 'none'. See [Setup]:Compression for details.
+
+#### Value
+Chainable character vector, which can be used as the text argument of writeLines to generate an
+ISS.
+
+#### Author(s)
+Jonathan M. Hill
+See Also
+get_R, copy_installation, create_config, create_bat, directives_section, setup_section,
+languages_section, tasks_section, files_section, icons_section, run_section, and code_section.
+
+#### Examples
+<pre><code>
+
+## Not run:
+start_iss('myapp') %>%
+directives_section(
+include_R = FALSE, R_version = '3.3.2') %>%
+setup_section(
+dir_out = 'installer', default_dir = 'pf')
+## End(Not run)
+</code></pre>

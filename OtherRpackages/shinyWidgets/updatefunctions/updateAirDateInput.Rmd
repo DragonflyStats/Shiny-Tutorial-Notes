@@ -1,0 +1,31 @@
+``updateAirDateInput`` : Change the value of a airDate input on the client
+
+#### Description
+
+Change the value of a airDate input on the client
+
+#### Usage
+
+<pre><code>
+
+updateAirDateInput(session, inputId, label = NULL, value = NULL,
+clear = FALSE, options = NULL)
+
+</code></pre>
+#### Arguments
+
+* ``session``:  The session object passed to function given to shinyServer.
+* ``inputId``:   The id of the input object.
+* ``label``: The label to set for the input object.
+* ``value``: The value to set for the input object.
+* clear Logical, clear all previous selected dates.
+* options Options to update, see available ones here: http://t1m0n.name/air-datepicker/
+docs/.9
+
+#### Examples
+<pre><code>
+
+## Not run:
+demoAirDatepicker("update")
+## End(Not run)
+</code></pre>

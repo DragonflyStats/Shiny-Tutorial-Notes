@@ -1,0 +1,59 @@
+---
+title: "``shinyWidgets::updatePrettyCheckbox``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Change the value of a pretty checkbox on the client
+
+#### Description
+
+Change the value of a pretty checkbox on the client
+
+#### Usage
+<pre><code>
+
+updatePrettyCheckbox(session, inputId, label = NULL, value = NULL)
+
+</code></pre>
+#### Arguments
+
+* ``session``:  The session object passed to function given to shinyServer.
+* ``inputId``:   The id of the input object.updatePrettyCheckboxGroup
+* ``label``: The label to set for the input object.
+* ``value``: The value to set for the input object.
+
+#### Examples
+<pre><code>
+
+## Not run:
+if (interactive()) {
+library(shiny)
+library(shinyWidgets)
+ui <- fluidPage(
+tags$h1("Pretty checkbox update value"),
+br(),
+prettyCheckbox(inputId = "checkbox1",
+label = "Update me!",
+shape = "curve", thick = TRUE, outline = TRUE),
+verbatimTextOutput(outputId = "res1"),
+radioButtons(
+inputId = "update", label = "Value to set:",
+choices = c("FALSE", "TRUE")
+)
+)
+server <- function(input, output, session) {
+output$res1 <- renderPrint(input$checkbox1)
+observeEvent(input$update, {
+updatePrettyToggle(session = session,
+inputId = "checkbox1",
+value = as.logical(input$update))
+})
+}
+shinyApp(ui, server)
+}
+</code></pre>

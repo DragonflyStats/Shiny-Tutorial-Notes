@@ -1,0 +1,30 @@
+
+##``tasks_section``
+Tasks Section of ISS
+
+#### Description
+
+Defines all of the user-customizable tasks during installation. These tasks appear as check boxes
+and radio buttons on the Select Additional Tasks installer page. See [Tasks] section for details.
+
+#### Usage
+<pre><code>
+
+tasks_section(iss, desktop_icon = TRUE)
+
+</code></pre>
+#### Arguments
+
+iss Character vector which cumulatively becomes an Inno Setup Script (ISS).
+desktop_icon Logical. If TRUE, create a desktop shortcut.
+
+#### Value
+Chainable character vector, which can be used as the text argument of writeLines to generate an ISS.
+
+#### Author(s)
+Jonathan M. Hill
+See Also
+get_R, copy_installation, create_config, create_bat, directives_section, setup_section,
+languages_section, tasks_section, files_section, icons_section, run_section, and code_section.%>%
+%>%
+25

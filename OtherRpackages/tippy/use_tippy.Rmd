@@ -1,0 +1,46 @@
+
+
+## ``tippy::use_tippy()``
+Use tippy
+
+#### Description
+
+Dynamically use tippy.
+
+#### Usage
+<pre><code>
+
+use_tippy()
+call_tippy(target, ...)
+
+</code></pre>
+#### Arguments
+
+target Target element.
+... Any option to pass to tippy4
+use_tippy
+Functions
+• use_tippy Includes tippy.js in header.
+• call_tippy call tippy on specific target element(s), place after elements to be targeted.
+See Also
+official documentation
+
+#### Examples
+```{r}
+if(interactive()){
+library(shiny)
+shinyApp(
+ui = fluidPage(
+use_tippy(),
+p("Some text", title = "tooltip"),
+p("Some text", title = "tooltip"),
+p("Some text", title = "tooltip"),
+p("Some text", title = "tooltip"),
+p("Some text", title = "tooltip"),
+p("Some text", title = "tooltip"),
+call_tippy("[title]") # all elements with title
+),
+server = function(input, output) {}
+)
+}
+```

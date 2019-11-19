@@ -1,0 +1,66 @@
+directives_section
+Inno Setup Preprocessor (ISPP) Directives
+
+#### Description
+
+Sets ISPP directives at the top of an ISS.
+
+#### Usage
+<pre><code>
+
+directives_section(app_name, include_R = FALSE,
+R_version = paste0(R.version$major, ".", R.version$minor),
+include_Pandoc = FALSE, Pandoc_version = rmarkdown::pandoc_version(),
+include_Chrome = FALSE, include_Rtools = FALSE,
+Rtools_version = "3.5", app_version = "0.0.0", publisher = "",
+main_url = "", custom_vars = "", custom_values = "")
+
+</code></pre>
+#### Arguments
+
+* ``app_name``: The name of the app. It will be displayed throughout the installer’s window titles, wizard pages, and dialog boxes. See [Setup]:AppName for details. For continuous installations, app_name is used to check for an R package of the same name, and update it. The Continuous Installation vignette has more details.
+* ``include_R``: To include R in the installer, include_R = TRUE. The version of R specified by R_version is used. The installer will check each user’s registry and only install R if necessary.
+* ``R_version``: R version to use. Supports inequalities. Defaults to: paste0(">=", R.version$major, '.', R.versio10
+directives_section
+* ``include_Pandoc``: To include Pandoc in the installer, include_Pandoc = TRUE. If installing a flexdashboard app, some users may need a copy of Pandoc. The installer will check the user’s registry for the version of Pandoc specified in Pandoc_version
+and only install it if necessary.
+* ``Pandoc_version``: Pandoc version to use, defaults to: pandoc_available.
+* include_Chrome To include Chrome in the installer, include_Chrome = TRUE. If you would like to use Chrome’s app mode, it is no longer supported by Google .
+* ``include_Rtools``: To include Rtools in the installer, include_Rtools = TRUE. For some packages to build properly, you may need to include Rtools.
+* ``Rtools_version``: Rtools version to include. For more information, see Building R for Windows.
+* ``app_version``: Version number of the app being installed, defaults to '0.0.0'. It is displayed in the Version field of the app’s Add/Remove Programs entry. See [Setup]:AppVersion for details.
+* ``publisher``: String displayed on the "Support" dialogue of the Add/Remove Programs Control Panel applet, defaults to " ". See [Setup]:AppPublisher for details. main_url String. Defaults to "".
+* ``custom_vars``: String vector. Defaults to "", and must be the same length as custom_values.
+* ``custom_values``: String vector of values for custom_vars. Defaults to "", and must be the same
+length as custom_vars.
+
+
+
+#### Examples
+<pre><code>
+
+start_iss('myapp') %>%
+directives_section(
+include_R = FALSE, R_version = '3.3.2',
+custom_vars = 'helpers',
+custom_values = 'path\\to\\helpers') %>%
+files_section(
+app_dir = getwd(),
+file_list = '{#helpers}')
+</code></pre>
+
+#### Value
+Chainable character vector, which can be used as the text argument of writeLines to generate an
+ISS.
+
+#### Details
+ISPP directives automate compile-time tasks and decrease the probability of typos. When referring
+to an ISPP directive, use ’{#var_name}’. For more information, call ispp_doc() or visit ISPP
+Help.
+ ``custom_vars`` and ``custom_values`` utilize the #define directive.
+
+#### Author(s)
+Jonathan M. Hill
+See Also
+get_R, copy_installation, create_config, create_bat, directives_section, setup_section,
+languages_section, tasks_section, files_section, icons_section, run_section, and code_section.

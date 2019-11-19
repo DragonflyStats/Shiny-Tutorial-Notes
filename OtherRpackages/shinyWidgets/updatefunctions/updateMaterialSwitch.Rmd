@@ -1,0 +1,28 @@
+---
+title: "``shinyWidgets::updateMaterialSwitch``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Change the value of a materialSwitch input on the client
+
+#### Description
+
+Change the value of a materialSwitch input on the client
+
+#### Usage
+<pre><code>
+
+updateMaterialSwitch(session, inputId, value = NULL)
+
+</code></pre>
+#### Arguments
+
+* ``session``:  The session object passed to function given to shinyServer.
+* ``inputId``:   The id of the input object.
+* ``value``: The value to set for the input object.
+See Also
+materialSwitch102

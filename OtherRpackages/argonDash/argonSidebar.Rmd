@@ -1,0 +1,45 @@
+---
+title: "``argonDash::argonSidebarHeader``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(argonDash)
+```
+
+
+A header to put inside argonDashSidebar
+#### Description
+A header to put inside argonDashSidebar
+
+#### Usage
+<pre><code>
+
+argonSidebarHeader(title = NULL)
+
+</code></pre>
+#### Arguments
+
+* title Header title
+
+Create a Boostrap 4 argon sidebar menu
+argonSidebarItem
+#### Description
+Build an argon dashboard main sidebar menu
+
+#### Usage
+<pre><code>
+
+argonSidebarItem(..., tabName = NULL, icon = NULL, icon_color = NULL)
+
+</code></pre>
+#### Arguments
+
+... Item name.
+tabName Should correspond exactly to the tabName given in argonTabItem.
+icon Item icon.
+icon_color Icon color.
+Author(s)
+David Granjon, <dgranjon@ymail.com>
+

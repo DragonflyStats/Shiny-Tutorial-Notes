@@ -1,0 +1,23 @@
+
+## ``argonDashBody``
+
+Create a Boostrap 4 dashboard body
+
+#### Description
+
+Build an argon dashboard body
+
+#### Usage
+<pre><code>
+
+argonDashBody(...)
+
+</code></pre>
+
+#### Arguments
+
+Body content, slot for argonTabItems
+
+#### Author(s)
+
+David Granjon, <dgranjon@ymail.com>

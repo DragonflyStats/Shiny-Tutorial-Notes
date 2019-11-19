@@ -1,0 +1,30 @@
+---
+title: "``shinyWidgets::circleButton`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(shinyWidgets)
+```
+
+
+Circle Action button
+
+#### Description
+
+Create a rounded action button.
+
+#### Usage
+
+<pre><code>
+circleButton(inputId, icon = NULL, status = "default", size = "default", ...)
+</code></pre>
+
+#### Arguments
+
+* ``inputId``:   The input slot that will be used to access the value.
+* ``icon``: An icon to appear on the button.
+* ``status``:  Color of the button.
+* ``size ``:  Size of the button : default, ``lg``, ``sm``, ``xs``.
+* ``...``: Named attributes to be applied to the button.

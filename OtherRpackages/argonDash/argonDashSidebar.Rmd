@@ -1,0 +1,33 @@
+
+## ``argonDashSidebar``
+
+Create a Boostrap 4 dashboard sidebar
+
+#### Description
+
+Build an argon dashboard sidebar
+
+#### Usage
+<pre><code>
+
+argonDashSidebar(..., dropdownMenus = NULL, id, brand_url = NULL,
+brand_logo = NULL, vertical = TRUE, side = c("left", "right"),
+size = c("s", "md", "lg"), skin = c("light", "dark"),
+background = "white")
+
+</code></pre>
+#### Arguments
+
+* ... Any element such as argonDashSidebar, argonSidebarMenu, argonSidebarItem, argonSidebarHeader and argonSidebarDivider.
+* dropdownMenus Slot for dropdown menus. Not displayd on large screens.
+* ``id``:  Unique sidebar id.
+* ``brand_url``:  Sidebar brand url
+* ``brand_logo``: Sidebar brand logo
+* ``vertical``: Whether to display the sidebar in vertical mode. TRUE by default.
+* ``side``: Sidebar side: "right" or "left". "left" by default.
+* size Sidebar size: "s", "md", "lg". "md" by default.
+* ``skin``: Sidebar skin. "light" by default.
+* background Sidebar background color. See https://demos.creative-tim.com/argon-design-system/docs/foundation/colors.html.
+
+#### Author(s)
+David Granjon, <dgranjon@ymail.com>

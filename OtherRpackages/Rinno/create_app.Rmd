@@ -1,0 +1,96 @@
+create_app
+5
+Creates installation files and Inno Setup Script (ISS), "app_name.iss"
+
+#### Description
+
+This function manages installation and app start up. To accept all defaults, just provide app_name.
+After calling create_app, call compile_iss to create an installer in dir_out.
+
+#### Usage
+<pre><code>
+
+create_app(app_name = "myapp", app_dir = getwd(),
+dir_out = "RInno_installer", pkgs = c("jsonlite", "shiny",
+"magrittr"), pkgs_path = "bin", repo = "https://cran.rstudio.com",
+remotes = "none", locals = NULL, app_repo_url = "none",
+auth_user = "none", auth_pw = "none", auth_token = github_pat(),
+user_browser = "electron", include_R = FALSE,
+include_Pandoc = FALSE, include_Chrome = FALSE,
+include_Rtools = FALSE, R_version = paste0(">=", R.version$major,
+".", R.version$minor), Pandoc_version = rmarkdown::pandoc_version(),
+Rtools_version = "3.5", overwrite = TRUE, force_nativefier = TRUE,
+nativefier_opts = c(), ...)
+
+</code></pre>
+#### Arguments
+
+* app_name The name of the app. It will be displayed throughout the installer’s window titles, wizard pages, and dialog boxes. See [Setup]:AppName for details. For
+continuous installations, app_name is used to check for an R package of the same name, and update it. The Continuous Installation vignette has more details.
+* app_dir Development app’s directory, defaults to getwd().
+* dir_out Installer’s directory. A sub-directory of app_dir, which will be created if it does not exist. Defaults to ’RInno_installer’.
+* pkgs Character vector of package dependencies. Remote development versions are supported via remotes. pkgs are downloaded into file.path(app_dir, pkgs_path) as Windows binary packages (.zip). If you build binary packages and store them there before calling create_app, they will be included as well.
+* pkgs_path Default location inside the app working directory to install package dependencies This defaults to pkgs_path = "bin"
+* repo Default repository to install CRAN package dependencies. Defaults to repo = "https://cran.rstudio.
+* remotes Character vector of GitHub repository addresses in the format username/repo[/subdir][\@ref|#pull] for GitHub package dependencies.
+* locals Character vector of local package dependencies. Deprecated as of v1.0.0. Use
+pkgs instead.
+app_repo_url Repository address for continuous installations in the format "https://bitbucket.org/username/repo6
+create_app
+* auth_user Bitbucket username. It is recommended to create a read-only account for each app. Support for OAuth 2 and tokens is in the works.
+* auth_pw
+Bitbucket password matching the above username.
+* auth_token
+To install from a private Github repo, generate a personal access token (PAT)
+in https://github.com/settings/tokens and supply to this argument. This
+is safer than using a password because you can easily delete a PAT without
+affecting any others.
+* user_browser
+Character for the default browser. Options include "chrome", "firefox", and "ie."
+* ``include_R``: To include R in the installer, include_R = TRUE. The version of R specified by R_version is used. The installer will check each user’s registry and only install R if necessary.
+* include_Pandoc To include Pandoc in the installer, include_Pandoc = TRUE. If installing a flexdashboard app, some users may need a copy of Pandoc. The installer will check the user’s registry for the version of Pandoc specified in Pandoc_version and only install it if necessary.
+* ``include_Chrome``: To include Chrome in the installer, include_Chrome = TRUE. If you would like to use Chrome’s app mode, it is no longer supported by Google :(.
+include_Rtools To include Rtools in the installer, include_Rtools = TRUE. For some packages to build properly, you may need to include Rtools.
+* ``R_version``: R version to use. Supports inequalities. Defaults to: paste0(">=", R.version$major, '.', R.version Pandoc_version Pandoc version to use, defaults to: pandoc_available.
+Rtools_version Rtools version to include. For more information, see Building R for Windows.
+* ``overwrite``: Logical. Should existing installation files be overwritten? See copy_installation for details.
+* ``force_nativefier``: Boolean. Defaults to true and re-builds UI. If false, the UI is not rebuilt.
+* ``nativefier_opts`` Character vector. Extra options to pass to nativefier when user_browser = "electron".
+Each string in the vector should be a valid nativefier command. For example, c('--no-overwrite', '--conceal', '--show-menu-bar'). For more information, system("nativefier --help").
+* ... Arguments passed on to setup_section, files_section, directives_section, icons_section, languages_section, code_section, tasks_section, and run_section.
+
+#### Details
+Creates the following files in app_dir
+•
+Icons for installer and app, setup.ico and default.ico respectively.
+Files that manage app start up, utils/package_manager.R, utils/ensure.R, and utils/launch_app.R.
+First/last page of the installer, infobefore.txt and infoafter.txt.
+Batch support files, utils/wsf/run.wsf, utils/wsf/js/run.js, utils/wsf/js/json2.js, utils/wsf/js/JSON.minify.js.
+A configuration file, config.cfg. See create_config for details.
+A batch file, app_name.bat. See create_bat for details.
+An Inno Setup Script, app_name.
+
+#### Author(s)
+Jonathan M. Hill and Hanjo Odendaal
+
+##### See Also
+get_R, copy_installation, create_config, create_bat, directives_section, setup_section,
+languages_section, tasks_section, files_section, icons_section, run_section, and code_section.
+
+#### Examples
+<pre><code>
+
+create_app('myapp')
+create_app(
+app_name = 'My AppName',
+app_dir = 'My/app/path',
+dir_out = 'wizard',
+pkgs = c('jsonlite', 'shiny', 'magrittr', 'xkcd'),
+include_R = TRUE,
+# Download R and install it with the app
+R_version = "2.2.1", # Old version of R
+privilege = 'high', # Admin only installation
+default_dir = 'pf') # Program Files
+)
+</code></pre>
+

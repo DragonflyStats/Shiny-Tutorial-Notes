@@ -1,0 +1,27 @@
+---
+title: "``shinyWidgets::tooltipOptions``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Tooltip options
+
+#### Description
+
+List of options for tooltip for a dropdown menu button.
+
+#### Usage
+<pre><code>
+
+tooltipOptions(placement = "right", title = "Params", html = FALSE)
+
+</code></pre>
+#### Arguments
+
+* ``placement`` : Placement of tooltip : right, top, bottom, left.
+* ``title`` : Text of the tooltip
+* ``html`` : Logical, allow HTML tags inside tooltip
+

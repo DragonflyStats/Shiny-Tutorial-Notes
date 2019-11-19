@@ -1,0 +1,37 @@
+Pascal script to check registry for R
+
+#### Description
+
+Modern Delphi-like Pascal adds a lot of customization possibilities to the installer. For examples,
+please visit Pascal Scripting Introduction.compile_iss
+3
+
+#### Usage
+<pre><code>
+
+code_section(iss, R_version = paste0(">=", R.version$major, ".",
+R.version$minor))
+
+</code></pre>
+#### Arguments
+
+iss Character vector which cumulatively becomes an Inno Setup Script (ISS).
+R_version R version to use. Supports inequalities. Defaults to: paste0(">=", R.version$major, '.', R.version
+Details
+This script checks the registry for R, so that R will only be installed if necessary.
+Value
+Chainable character vector, which can be used as the text argument of writeLines to generate an
+ISS.
+Author(s)
+Jonathan M. Hill
+See Also
+get_R, copy_installation, create_config, create_bat, directives_section, setup_section,
+languages_section, tasks_section, files_section, icons_section, run_section, and code_section.
+
+#### Examples
+<pre><code>
+
+## Not run:
+readLines(system.file('installation/code.iss', package = 'RInno'))
+## End(Not run)
+compile_iss

@@ -1,0 +1,75 @@
+---
+title: "``shinyWidgets:::vertical-tab""
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+#### Description
+
+Vertical tab panel
+
+#### Usage
+<pre><code>
+
+verticalTabsetPanel(..., selected = NULL, id = NULL, color = "#112446")
+
+verticalTabPanel(title, ..., value = title, icon = NULL, box_height = "160px")
+
+</code></pre>
+#### Arguments
+
+* ``...``: For verticalTabsetPanel, verticalTabPanel to include, and for the later, UI elements.
+* ``selected``:   The value (or, if none was supplied, the title) of the tab that should be selected by default. If NULL, the first tab will be selected.
+* ``id``: If provided, you can use input$id in your server logic to determine which of the current tabs is active. The value will correspond to the value argument that is passed to verticalTabPanel.
+* ``color``: Color for the tab panels.
+* ``title``: Display title for tab.
+* ``value``: Not used yet.
+* ``icon``: Optional icon to appear on the tab.
+* ``box_height``: Height for the title box.
+
+
+
+#### Examples
+<pre><code>
+
+
+library(shiny)
+library(shinyWidgets)
+########
+ui <- fluidPage(
+  fluidRow(
+    column(
+      width = 10, offset = 1,
+      tags$h2("Vertical tab panel
+verticalTabsetPanel(
+  verticalTabPanel(
+  title = "Title 1", icon
+  "Content panel 1"),
+verticalTabPanel(
+title = "Title 2", icon
+"Content panel 2"),
+verticalTabPanel(
+title = "Title 3", icon
+"Content panel 3")
+)
+)
+)
+)
+example"),
+= icon("home", "fa-2x"),
+= icon("map", "fa-2x"),
+= icon("rocket", "fa-2x"),
+########
+server <- function(input, output, session) {
+}
+########
+shinyApp(ui, server)
+
+</code></pre>
+
+#### See Also
+updateVerticalTabsetPanel for updating selected tabs.
